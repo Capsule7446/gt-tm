@@ -2085,7 +2085,7 @@
       tag.__emotion_styles = processor(tag.__emotion_styles);
     }
   };
-  const _excluded$n = ["values", "unit", "step"];
+  const _excluded$p = ["values", "unit", "step"];
   const sortBreakpointsValues = (values2) => {
     const breakpointsAsArray = Object.keys(values2).map((key) => ({
       key,
@@ -2116,7 +2116,7 @@
       },
       unit = "px",
       step = 5
-    } = breakpoints, other = _objectWithoutPropertiesLoose(breakpoints, _excluded$n);
+    } = breakpoints, other = _objectWithoutPropertiesLoose(breakpoints, _excluded$p);
     const sortedValues = sortBreakpointsValues(values2);
     const keys = Object.keys(sortedValues);
     function up(key) {
@@ -3091,14 +3091,14 @@
   const styleFunctionSx = unstable_createStyleFunctionSx();
   styleFunctionSx.filterProps = ["sx"];
   const styleFunctionSx$1 = styleFunctionSx;
-  const _excluded$m = ["breakpoints", "palette", "spacing", "shape"];
+  const _excluded$o = ["breakpoints", "palette", "spacing", "shape"];
   function createTheme$1(options = {}, ...args) {
     const {
       breakpoints: breakpointsInput = {},
       palette: paletteInput = {},
       spacing: spacingInput,
       shape: shapeInput = {}
-    } = options, other = _objectWithoutPropertiesLoose(options, _excluded$m);
+    } = options, other = _objectWithoutPropertiesLoose(options, _excluded$o);
     const breakpoints = createBreakpoints(breakpointsInput);
     const spacing = createSpacing(spacingInput);
     let muiTheme = deepmerge({
@@ -3133,7 +3133,7 @@
   function useTheme$1(defaultTheme2 = systemDefaultTheme$1) {
     return useTheme$2(defaultTheme2);
   }
-  const _excluded$l = ["sx"];
+  const _excluded$n = ["sx"];
   const splitProps = (props) => {
     var _props$theme$unstable, _props$theme;
     const result = {
@@ -3153,7 +3153,7 @@
   function extendSxProp(props) {
     const {
       sx: inSx
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$l);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$n);
     const {
       systemProps,
       otherProps
@@ -3194,14 +3194,14 @@
       (e2 = arguments[f2++]) && (t2 = r(e2)) && (n2 && (n2 += " "), n2 += t2);
     return n2;
   }
-  const _excluded$k = ["variant"];
+  const _excluded$m = ["variant"];
   function isEmpty$1(string) {
     return string.length === 0;
   }
   function propsToClassKey(props) {
     const {
       variant
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$k);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$m);
     let classKey = variant || "";
     Object.keys(other).sort().forEach((key) => {
       if (key === "color") {
@@ -3212,7 +3212,7 @@
     });
     return classKey;
   }
-  const _excluded$j = ["name", "slot", "skipVariantsResolver", "skipSx", "overridesResolver"];
+  const _excluded$l = ["name", "slot", "skipVariantsResolver", "skipSx", "overridesResolver"];
   function isEmpty(obj) {
     return Object.keys(obj).length === 0;
   }
@@ -3342,7 +3342,7 @@
         // TODO v6: remove `lowercaseFirstLetter()` in the next major release
         // For more details: https://github.com/mui/material-ui/pull/37908
         overridesResolver = defaultOverridesResolver(lowercaseFirstLetter(componentSlot))
-      } = inputOptions, options = _objectWithoutPropertiesLoose(inputOptions, _excluded$j);
+      } = inputOptions, options = _objectWithoutPropertiesLoose(inputOptions, _excluded$l);
       const skipVariantsResolver = inputSkipVariantsResolver !== void 0 ? inputSkipVariantsResolver : (
         // TODO v6: remove `Root` in the next major release
         // For more details: https://github.com/mui/material-ui/pull/37908
@@ -3655,7 +3655,7 @@
       }
     }, mixins);
   }
-  const _excluded$i = ["mode", "contrastThreshold", "tonalOffset"];
+  const _excluded$k = ["mode", "contrastThreshold", "tonalOffset"];
   const light = {
     // The colors used to style the text.
     text: {
@@ -3823,7 +3823,7 @@
       mode = "light",
       contrastThreshold = 3,
       tonalOffset = 0.2
-    } = palette, other = _objectWithoutPropertiesLoose(palette, _excluded$i);
+    } = palette, other = _objectWithoutPropertiesLoose(palette, _excluded$k);
     const primary = palette.primary || getDefaultPrimary(mode);
     const secondary = palette.secondary || getDefaultSecondary(mode);
     const error = palette.error || getDefaultError(mode);
@@ -3917,7 +3917,7 @@
     }, modes[mode]), other);
     return paletteOutput;
   }
-  const _excluded$h = ["fontFamily", "fontSize", "fontWeightLight", "fontWeightRegular", "fontWeightMedium", "fontWeightBold", "htmlFontSize", "allVariants", "pxToRem"];
+  const _excluded$j = ["fontFamily", "fontSize", "fontWeightLight", "fontWeightRegular", "fontWeightMedium", "fontWeightBold", "htmlFontSize", "allVariants", "pxToRem"];
   function round(value) {
     return Math.round(value * 1e5) / 1e5;
   }
@@ -3941,7 +3941,7 @@
       // Apply the CSS properties to all the variants.
       allVariants,
       pxToRem: pxToRem2
-    } = _ref, other = _objectWithoutPropertiesLoose(_ref, _excluded$h);
+    } = _ref, other = _objectWithoutPropertiesLoose(_ref, _excluded$j);
     const coef = fontSize / 14;
     const pxToRem = pxToRem2 || ((size) => `${size / htmlFontSize * coef}rem`);
     const buildVariant = (fontWeight, size, lineHeight, letterSpacing, casing) => _extends({
@@ -3998,7 +3998,7 @@
   }
   const shadows = ["none", createShadow(0, 2, 1, -1, 0, 1, 1, 0, 0, 1, 3, 0), createShadow(0, 3, 1, -2, 0, 2, 2, 0, 0, 1, 5, 0), createShadow(0, 3, 3, -2, 0, 3, 4, 0, 0, 1, 8, 0), createShadow(0, 2, 4, -1, 0, 4, 5, 0, 0, 1, 10, 0), createShadow(0, 3, 5, -1, 0, 5, 8, 0, 0, 1, 14, 0), createShadow(0, 3, 5, -1, 0, 6, 10, 0, 0, 1, 18, 0), createShadow(0, 4, 5, -2, 0, 7, 10, 1, 0, 2, 16, 1), createShadow(0, 5, 5, -3, 0, 8, 10, 1, 0, 3, 14, 2), createShadow(0, 5, 6, -3, 0, 9, 12, 1, 0, 3, 16, 2), createShadow(0, 6, 6, -3, 0, 10, 14, 1, 0, 4, 18, 3), createShadow(0, 6, 7, -4, 0, 11, 15, 1, 0, 4, 20, 3), createShadow(0, 7, 8, -4, 0, 12, 17, 2, 0, 5, 22, 4), createShadow(0, 7, 8, -4, 0, 13, 19, 2, 0, 5, 24, 4), createShadow(0, 7, 9, -4, 0, 14, 21, 2, 0, 5, 26, 4), createShadow(0, 8, 9, -5, 0, 15, 22, 2, 0, 6, 28, 5), createShadow(0, 8, 10, -5, 0, 16, 24, 2, 0, 6, 30, 5), createShadow(0, 8, 11, -5, 0, 17, 26, 2, 0, 6, 32, 5), createShadow(0, 9, 11, -5, 0, 18, 28, 2, 0, 7, 34, 6), createShadow(0, 9, 12, -6, 0, 19, 29, 2, 0, 7, 36, 6), createShadow(0, 10, 13, -6, 0, 20, 31, 3, 0, 8, 38, 7), createShadow(0, 10, 13, -6, 0, 21, 33, 3, 0, 8, 40, 7), createShadow(0, 10, 14, -6, 0, 22, 35, 3, 0, 8, 42, 7), createShadow(0, 11, 14, -7, 0, 23, 36, 3, 0, 9, 44, 8), createShadow(0, 11, 15, -7, 0, 24, 38, 3, 0, 9, 46, 8)];
   const shadows$1 = shadows;
-  const _excluded$g = ["duration", "easing", "delay"];
+  const _excluded$i = ["duration", "easing", "delay"];
   const easing = {
     // This is the most common easing curve.
     easeInOut: "cubic-bezier(0.4, 0, 0.2, 1)",
@@ -4042,7 +4042,7 @@
         easing: easingOption = mergedEasing.easeInOut,
         delay = 0
       } = options;
-      _objectWithoutPropertiesLoose(options, _excluded$g);
+      _objectWithoutPropertiesLoose(options, _excluded$i);
       return (Array.isArray(props) ? props : [props]).map((animatedProp) => `${animatedProp} ${typeof durationOption === "string" ? durationOption : formatMs(durationOption)} ${easingOption} ${typeof delay === "string" ? delay : formatMs(delay)}`).join(",");
     };
     return _extends({
@@ -4064,14 +4064,14 @@
     tooltip: 1500
   };
   const zIndex$1 = zIndex;
-  const _excluded$f = ["breakpoints", "mixins", "spacing", "palette", "transitions", "typography", "shape"];
+  const _excluded$h = ["breakpoints", "mixins", "spacing", "palette", "transitions", "typography", "shape"];
   function createTheme(options = {}, ...args) {
     const {
       mixins: mixinsInput = {},
       palette: paletteInput = {},
       transitions: transitionsInput = {},
       typography: typographyInput = {}
-    } = options, other = _objectWithoutPropertiesLoose(options, _excluded$f);
+    } = options, other = _objectWithoutPropertiesLoose(options, _excluded$h);
     if (options.vars) {
       throw new Error(formatMuiErrorMessage(18));
     }
@@ -4135,8 +4135,8 @@
     return generateUtilityClass("MuiSvgIcon", slot);
   }
   generateUtilityClasses("MuiSvgIcon", ["root", "colorPrimary", "colorSecondary", "colorAction", "colorError", "colorDisabled", "fontSizeInherit", "fontSizeSmall", "fontSizeMedium", "fontSizeLarge"]);
-  const _excluded$e = ["children", "className", "color", "component", "fontSize", "htmlColor", "inheritViewBox", "titleAccess", "viewBox"];
-  const useUtilityClasses$b = (ownerState) => {
+  const _excluded$g = ["children", "className", "color", "component", "fontSize", "htmlColor", "inheritViewBox", "titleAccess", "viewBox"];
+  const useUtilityClasses$d = (ownerState) => {
     const {
       color: color2,
       fontSize,
@@ -4202,7 +4202,7 @@
       inheritViewBox = false,
       titleAccess,
       viewBox = "0 0 24 24"
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$e);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$g);
     const hasSvgAsChild = /* @__PURE__ */ React__namespace.isValidElement(children) && children.type === "svg";
     const ownerState = _extends({}, props, {
       color: color2,
@@ -4217,7 +4217,7 @@
     if (!inheritViewBox) {
       more.viewBox = viewBox;
     }
-    const classes = useUtilityClasses$b(ownerState);
+    const classes = useUtilityClasses$d(ownerState);
     return /* @__PURE__ */ jsxRuntimeExports.jsxs(SvgIconRoot, _extends({
       as: component,
       className: clsx(classes.root, className),
@@ -4748,8 +4748,8 @@
     return generateUtilityClass("MuiPaper", slot);
   }
   generateUtilityClasses("MuiPaper", ["root", "rounded", "outlined", "elevation", "elevation0", "elevation1", "elevation2", "elevation3", "elevation4", "elevation5", "elevation6", "elevation7", "elevation8", "elevation9", "elevation10", "elevation11", "elevation12", "elevation13", "elevation14", "elevation15", "elevation16", "elevation17", "elevation18", "elevation19", "elevation20", "elevation21", "elevation22", "elevation23", "elevation24"]);
-  const _excluded$d = ["className", "component", "elevation", "square", "variant"];
-  const useUtilityClasses$a = (ownerState) => {
+  const _excluded$f = ["className", "component", "elevation", "square", "variant"];
+  const useUtilityClasses$c = (ownerState) => {
     const {
       square,
       elevation,
@@ -4802,14 +4802,14 @@
       elevation = 1,
       square = false,
       variant = "elevation"
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$d);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$f);
     const ownerState = _extends({}, props, {
       component,
       elevation,
       square,
       variant
     });
-    const classes = useUtilityClasses$a(ownerState);
+    const classes = useUtilityClasses$c(ownerState);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(PaperRoot, _extends({
       as: component,
       ownerState,
@@ -4861,7 +4861,7 @@
   }
   const touchRippleClasses = generateUtilityClasses("MuiTouchRipple", ["root", "ripple", "rippleVisible", "ripplePulsate", "child", "childLeaving", "childPulsate"]);
   const touchRippleClasses$1 = touchRippleClasses;
-  const _excluded$c = ["center", "classes", "className"];
+  const _excluded$e = ["center", "classes", "className"];
   let _ = (t2) => t2, _t, _t2, _t3, _t4;
   const DURATION = 550;
   const DELAY_RIPPLE = 80;
@@ -4976,7 +4976,7 @@
       center: centerProp = false,
       classes = {},
       className
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$c);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$e);
     const [ripples, setRipples] = React__namespace.useState([]);
     const nextKey = React__namespace.useRef(0);
     const rippleCallback = React__namespace.useRef(null);
@@ -5143,8 +5143,8 @@
   }
   const buttonBaseClasses = generateUtilityClasses("MuiButtonBase", ["root", "disabled", "focusVisible"]);
   const buttonBaseClasses$1 = buttonBaseClasses;
-  const _excluded$b = ["action", "centerRipple", "children", "className", "component", "disabled", "disableRipple", "disableTouchRipple", "focusRipple", "focusVisibleClassName", "LinkComponent", "onBlur", "onClick", "onContextMenu", "onDragLeave", "onFocus", "onFocusVisible", "onKeyDown", "onKeyUp", "onMouseDown", "onMouseLeave", "onMouseUp", "onTouchEnd", "onTouchMove", "onTouchStart", "tabIndex", "TouchRippleProps", "touchRippleRef", "type"];
-  const useUtilityClasses$9 = (ownerState) => {
+  const _excluded$d = ["action", "centerRipple", "children", "className", "component", "disabled", "disableRipple", "disableTouchRipple", "focusRipple", "focusVisibleClassName", "LinkComponent", "onBlur", "onClick", "onContextMenu", "onDragLeave", "onFocus", "onFocusVisible", "onKeyDown", "onKeyUp", "onMouseDown", "onMouseLeave", "onMouseUp", "onTouchEnd", "onTouchMove", "onTouchStart", "tabIndex", "TouchRippleProps", "touchRippleRef", "type"];
+  const useUtilityClasses$b = (ownerState) => {
     const {
       disabled,
       focusVisible,
@@ -5238,7 +5238,7 @@
       TouchRippleProps,
       touchRippleRef,
       type
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$b);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$d);
     const buttonRef = React__namespace.useRef(null);
     const rippleRef = React__namespace.useRef(null);
     const handleRippleRef = useForkRef(rippleRef, touchRippleRef);
@@ -5385,7 +5385,7 @@
       tabIndex,
       focusVisible
     });
-    const classes = useUtilityClasses$9(ownerState);
+    const classes = useUtilityClasses$b(ownerState);
     return /* @__PURE__ */ jsxRuntimeExports.jsxs(ButtonBaseRoot, _extends({
       as: ComponentProp,
       className: clsx(classes.root, className),
@@ -5421,8 +5421,8 @@
     return generateUtilityClass("MuiTypography", slot);
   }
   generateUtilityClasses("MuiTypography", ["root", "h1", "h2", "h3", "h4", "h5", "h6", "subtitle1", "subtitle2", "body1", "body2", "inherit", "button", "caption", "overline", "alignLeft", "alignRight", "alignCenter", "alignJustify", "noWrap", "gutterBottom", "paragraph"]);
-  const _excluded$a = ["align", "className", "component", "gutterBottom", "noWrap", "paragraph", "variant", "variantMapping"];
-  const useUtilityClasses$8 = (ownerState) => {
+  const _excluded$c = ["align", "className", "component", "gutterBottom", "noWrap", "paragraph", "variant", "variantMapping"];
+  const useUtilityClasses$a = (ownerState) => {
     const {
       align,
       gutterBottom,
@@ -5505,7 +5505,7 @@
       paragraph = false,
       variant = "body1",
       variantMapping = defaultVariantMapping
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$a);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$c);
     const ownerState = _extends({}, props, {
       align,
       color: color2,
@@ -5518,7 +5518,7 @@
       variantMapping
     });
     const Component = component || (paragraph ? "p" : variantMapping[variant] || defaultVariantMapping[variant]) || "span";
-    const classes = useUtilityClasses$8(ownerState);
+    const classes = useUtilityClasses$a(ownerState);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(TypographyRoot, _extends({
       as: Component,
       ref,
@@ -5605,7 +5605,7 @@
       internalRef: internalSlotProps.ref
     };
   }
-  const _excluded$9 = ["elementType", "externalSlotProps", "ownerState", "skipResolvingSlotProps"];
+  const _excluded$b = ["elementType", "externalSlotProps", "ownerState", "skipResolvingSlotProps"];
   function useSlotProps(parameters) {
     var _parameters$additiona;
     const {
@@ -5613,7 +5613,7 @@
       externalSlotProps,
       ownerState,
       skipResolvingSlotProps = false
-    } = parameters, rest = _objectWithoutPropertiesLoose(parameters, _excluded$9);
+    } = parameters, rest = _objectWithoutPropertiesLoose(parameters, _excluded$b);
     const resolvedComponentsProps = skipResolvingSlotProps ? {} : resolveComponentProps(externalSlotProps, ownerState);
     const {
       props: mergedProps,
@@ -6214,7 +6214,12 @@
       hasTransition
     };
   }
-  const _excluded$8 = ["addEndListener", "appear", "children", "easing", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "style", "timeout", "TransitionComponent"];
+  const FormControlContext = /* @__PURE__ */ React__namespace.createContext(void 0);
+  const FormControlContext$1 = FormControlContext;
+  function useFormControl() {
+    return React__namespace.useContext(FormControlContext$1);
+  }
+  const _excluded$a = ["addEndListener", "appear", "children", "easing", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "style", "timeout", "TransitionComponent"];
   const styles = {
     entering: {
       opacity: 1
@@ -6245,7 +6250,7 @@
       timeout = defaultTimeout,
       // eslint-disable-next-line react/prop-types
       TransitionComponent = Transition$1
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$8);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$a);
     const nodeRef = React__namespace.useRef(null);
     const handleRef = useForkRef(nodeRef, children.ref, ref);
     const normalizedTransitionCallback = (callback) => (maybeIsAppearing) => {
@@ -6325,8 +6330,8 @@
     return generateUtilityClass("MuiBackdrop", slot);
   }
   generateUtilityClasses("MuiBackdrop", ["root", "invisible"]);
-  const _excluded$7 = ["children", "className", "component", "components", "componentsProps", "invisible", "open", "slotProps", "slots", "TransitionComponent", "transitionDuration"];
-  const useUtilityClasses$7 = (ownerState) => {
+  const _excluded$9 = ["children", "className", "component", "components", "componentsProps", "invisible", "open", "slotProps", "slots", "TransitionComponent", "transitionDuration"];
+  const useUtilityClasses$9 = (ownerState) => {
     const {
       classes,
       invisible
@@ -6379,12 +6384,12 @@
       slots = {},
       TransitionComponent = Fade$1,
       transitionDuration
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$7);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$9);
     const ownerState = _extends({}, props, {
       component,
       invisible
     });
-    const classes = useUtilityClasses$7(ownerState);
+    const classes = useUtilityClasses$9(ownerState);
     const rootSlotProps = (_slotProps$root = slotProps.root) != null ? _slotProps$root : componentsProps.root;
     return /* @__PURE__ */ jsxRuntimeExports.jsx(TransitionComponent, _extends({
       in: open,
@@ -6412,8 +6417,8 @@
   const ButtonGroupContext$1 = ButtonGroupContext;
   const ButtonGroupButtonContext = /* @__PURE__ */ React__namespace.createContext(void 0);
   const ButtonGroupButtonContext$1 = ButtonGroupButtonContext;
-  const _excluded$6 = ["children", "color", "component", "className", "disabled", "disableElevation", "disableFocusRipple", "endIcon", "focusVisibleClassName", "fullWidth", "size", "startIcon", "type", "variant"];
-  const useUtilityClasses$6 = (ownerState) => {
+  const _excluded$8 = ["children", "color", "component", "className", "disabled", "disableElevation", "disableFocusRipple", "endIcon", "focusVisibleClassName", "fullWidth", "size", "startIcon", "type", "variant"];
+  const useUtilityClasses$8 = (ownerState) => {
     const {
       color: color2,
       disableElevation,
@@ -6638,7 +6643,7 @@
       startIcon: startIconProp,
       type,
       variant = "text"
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$6);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$8);
     const ownerState = _extends({}, props, {
       color: color2,
       component,
@@ -6650,7 +6655,7 @@
       type,
       variant
     });
-    const classes = useUtilityClasses$6(ownerState);
+    const classes = useUtilityClasses$8(ownerState);
     const startIcon = startIconProp && /* @__PURE__ */ jsxRuntimeExports.jsx(ButtonStartIcon, {
       className: classes.startIcon,
       ownerState,
@@ -6677,12 +6682,157 @@
     }));
   });
   const Button$1 = Button;
+  function getSwitchBaseUtilityClass(slot) {
+    return generateUtilityClass("PrivateSwitchBase", slot);
+  }
+  generateUtilityClasses("PrivateSwitchBase", ["root", "checked", "disabled", "input", "edgeStart", "edgeEnd"]);
+  const _excluded$7 = ["autoFocus", "checked", "checkedIcon", "className", "defaultChecked", "disabled", "disableFocusRipple", "edge", "icon", "id", "inputProps", "inputRef", "name", "onBlur", "onChange", "onFocus", "readOnly", "required", "tabIndex", "type", "value"];
+  const useUtilityClasses$7 = (ownerState) => {
+    const {
+      classes,
+      checked,
+      disabled,
+      edge
+    } = ownerState;
+    const slots = {
+      root: ["root", checked && "checked", disabled && "disabled", edge && `edge${capitalize(edge)}`],
+      input: ["input"]
+    };
+    return composeClasses(slots, getSwitchBaseUtilityClass, classes);
+  };
+  const SwitchBaseRoot = styled$1(ButtonBase$1)(({
+    ownerState
+  }) => _extends({
+    padding: 9,
+    borderRadius: "50%"
+  }, ownerState.edge === "start" && {
+    marginLeft: ownerState.size === "small" ? -3 : -12
+  }, ownerState.edge === "end" && {
+    marginRight: ownerState.size === "small" ? -3 : -12
+  }));
+  const SwitchBaseInput = styled$1("input")({
+    cursor: "inherit",
+    position: "absolute",
+    opacity: 0,
+    width: "100%",
+    height: "100%",
+    top: 0,
+    left: 0,
+    margin: 0,
+    padding: 0,
+    zIndex: 1
+  });
+  const SwitchBase = /* @__PURE__ */ React__namespace.forwardRef(function SwitchBase2(props, ref) {
+    const {
+      autoFocus,
+      checked: checkedProp,
+      checkedIcon,
+      className,
+      defaultChecked,
+      disabled: disabledProp,
+      disableFocusRipple = false,
+      edge = false,
+      icon,
+      id,
+      inputProps,
+      inputRef,
+      name,
+      onBlur,
+      onChange,
+      onFocus,
+      readOnly,
+      required = false,
+      tabIndex,
+      type,
+      value
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$7);
+    const [checked, setCheckedState] = useControlled({
+      controlled: checkedProp,
+      default: Boolean(defaultChecked),
+      name: "SwitchBase",
+      state: "checked"
+    });
+    const muiFormControl = useFormControl();
+    const handleFocus = (event) => {
+      if (onFocus) {
+        onFocus(event);
+      }
+      if (muiFormControl && muiFormControl.onFocus) {
+        muiFormControl.onFocus(event);
+      }
+    };
+    const handleBlur = (event) => {
+      if (onBlur) {
+        onBlur(event);
+      }
+      if (muiFormControl && muiFormControl.onBlur) {
+        muiFormControl.onBlur(event);
+      }
+    };
+    const handleInputChange = (event) => {
+      if (event.nativeEvent.defaultPrevented) {
+        return;
+      }
+      const newChecked = event.target.checked;
+      setCheckedState(newChecked);
+      if (onChange) {
+        onChange(event, newChecked);
+      }
+    };
+    let disabled = disabledProp;
+    if (muiFormControl) {
+      if (typeof disabled === "undefined") {
+        disabled = muiFormControl.disabled;
+      }
+    }
+    const hasLabelFor = type === "checkbox" || type === "radio";
+    const ownerState = _extends({}, props, {
+      checked,
+      disabled,
+      disableFocusRipple,
+      edge
+    });
+    const classes = useUtilityClasses$7(ownerState);
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs(SwitchBaseRoot, _extends({
+      component: "span",
+      className: clsx(classes.root, className),
+      centerRipple: true,
+      focusRipple: !disableFocusRipple,
+      disabled,
+      tabIndex: null,
+      role: void 0,
+      onFocus: handleFocus,
+      onBlur: handleBlur,
+      ownerState,
+      ref
+    }, other, {
+      children: [/* @__PURE__ */ jsxRuntimeExports.jsx(SwitchBaseInput, _extends({
+        autoFocus,
+        checked: checkedProp,
+        defaultChecked,
+        className: classes.input,
+        disabled,
+        id: hasLabelFor ? id : void 0,
+        name,
+        onChange: handleInputChange,
+        readOnly,
+        ref: inputRef,
+        required,
+        ownerState,
+        tabIndex,
+        type
+      }, type === "checkbox" && value === void 0 ? {} : {
+        value
+      }, inputProps)), checked ? checkedIcon : icon]
+    }));
+  });
+  const SwitchBase$1 = SwitchBase;
   function getModalUtilityClass(slot) {
     return generateUtilityClass("MuiModal", slot);
   }
   generateUtilityClasses("MuiModal", ["root", "hidden", "backdrop"]);
-  const _excluded$5 = ["BackdropComponent", "BackdropProps", "classes", "className", "closeAfterTransition", "children", "container", "component", "components", "componentsProps", "disableAutoFocus", "disableEnforceFocus", "disableEscapeKeyDown", "disablePortal", "disableRestoreFocus", "disableScrollLock", "hideBackdrop", "keepMounted", "onBackdropClick", "onClose", "onTransitionEnter", "onTransitionExited", "open", "slotProps", "slots", "theme"];
-  const useUtilityClasses$5 = (ownerState) => {
+  const _excluded$6 = ["BackdropComponent", "BackdropProps", "classes", "className", "closeAfterTransition", "children", "container", "component", "components", "componentsProps", "disableAutoFocus", "disableEnforceFocus", "disableEscapeKeyDown", "disablePortal", "disableRestoreFocus", "disableScrollLock", "hideBackdrop", "keepMounted", "onBackdropClick", "onClose", "onTransitionEnter", "onTransitionExited", "open", "slotProps", "slots", "theme"];
+  const useUtilityClasses$6 = (ownerState) => {
     const {
       open,
       exited,
@@ -6754,7 +6904,7 @@
       slotProps,
       slots
       // eslint-disable-next-line react/prop-types
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$5);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$6);
     const propsWithDefaults = _extends({}, props, {
       closeAfterTransition,
       disableAutoFocus,
@@ -6780,7 +6930,7 @@
     const ownerState = _extends({}, propsWithDefaults, {
       exited
     });
-    const classes = useUtilityClasses$5(ownerState);
+    const classes = useUtilityClasses$6(ownerState);
     const childProps = {};
     if (children.props.tabIndex === void 0) {
       childProps.tabIndex = "-1";
@@ -6855,7 +7005,7 @@
   const dialogClasses$1 = dialogClasses;
   const DialogContext = /* @__PURE__ */ React__namespace.createContext({});
   const DialogContext$1 = DialogContext;
-  const _excluded$4 = ["aria-describedby", "aria-labelledby", "BackdropComponent", "BackdropProps", "children", "className", "disableEscapeKeyDown", "fullScreen", "fullWidth", "maxWidth", "onBackdropClick", "onClose", "open", "PaperComponent", "PaperProps", "scroll", "TransitionComponent", "transitionDuration", "TransitionProps"];
+  const _excluded$5 = ["aria-describedby", "aria-labelledby", "BackdropComponent", "BackdropProps", "children", "className", "disableEscapeKeyDown", "fullScreen", "fullWidth", "maxWidth", "onBackdropClick", "onClose", "open", "PaperComponent", "PaperProps", "scroll", "TransitionComponent", "transitionDuration", "TransitionProps"];
   const DialogBackdrop = styled$1(Backdrop$1, {
     name: "MuiDialog",
     slot: "Backdrop",
@@ -6864,7 +7014,7 @@
     // Improve scrollable dialog support.
     zIndex: -1
   });
-  const useUtilityClasses$4 = (ownerState) => {
+  const useUtilityClasses$5 = (ownerState) => {
     const {
       classes,
       scroll,
@@ -7013,7 +7163,7 @@
       TransitionComponent = Fade$1,
       transitionDuration = defaultTransitionDuration,
       TransitionProps
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$4);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$5);
     const ownerState = _extends({}, props, {
       disableEscapeKeyDown,
       fullScreen,
@@ -7021,7 +7171,7 @@
       maxWidth: maxWidth2,
       scroll
     });
-    const classes = useUtilityClasses$4(ownerState);
+    const classes = useUtilityClasses$5(ownerState);
     const backdropClick = React__namespace.useRef();
     const handleMouseDown = (event) => {
       backdropClick.current = event.target === event.currentTarget;
@@ -7096,8 +7246,8 @@
     return generateUtilityClass("MuiDialogActions", slot);
   }
   generateUtilityClasses("MuiDialogActions", ["root", "spacing"]);
-  const _excluded$3 = ["className", "disableSpacing"];
-  const useUtilityClasses$3 = (ownerState) => {
+  const _excluded$4 = ["className", "disableSpacing"];
+  const useUtilityClasses$4 = (ownerState) => {
     const {
       classes,
       disableSpacing
@@ -7137,11 +7287,11 @@
     const {
       className,
       disableSpacing = false
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$3);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$4);
     const ownerState = _extends({}, props, {
       disableSpacing
     });
-    const classes = useUtilityClasses$3(ownerState);
+    const classes = useUtilityClasses$4(ownerState);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(DialogActionsRoot, _extends({
       className: clsx(classes.root, className),
       ownerState,
@@ -7158,8 +7308,8 @@
   }
   const dialogTitleClasses = generateUtilityClasses("MuiDialogTitle", ["root"]);
   const dialogTitleClasses$1 = dialogTitleClasses;
-  const _excluded$2 = ["className", "dividers"];
-  const useUtilityClasses$2 = (ownerState) => {
+  const _excluded$3 = ["className", "dividers"];
+  const useUtilityClasses$3 = (ownerState) => {
     const {
       classes,
       dividers
@@ -7204,11 +7354,11 @@
     const {
       className,
       dividers = false
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$2);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$3);
     const ownerState = _extends({}, props, {
       dividers
     });
-    const classes = useUtilityClasses$2(ownerState);
+    const classes = useUtilityClasses$3(ownerState);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(DialogContentRoot, _extends({
       className: clsx(classes.root, className),
       ownerState,
@@ -7216,8 +7366,8 @@
     }, other));
   });
   const DialogContent$1 = DialogContent;
-  const _excluded$1 = ["className", "id"];
-  const useUtilityClasses$1 = (ownerState) => {
+  const _excluded$2 = ["className", "id"];
+  const useUtilityClasses$2 = (ownerState) => {
     const {
       classes
     } = ownerState;
@@ -7242,9 +7392,9 @@
     const {
       className,
       id: idProp
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$1);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$2);
     const ownerState = props;
-    const classes = useUtilityClasses$1(ownerState);
+    const classes = useUtilityClasses$2(ownerState);
     const {
       titleId = idProp
     } = React__namespace.useContext(DialogContext$1);
@@ -7285,7 +7435,7 @@
     ...GRID_SIZES.map((size) => `grid-lg-${size}`),
     ...GRID_SIZES.map((size) => `grid-xl-${size}`)
   ]);
-  const _excluded = ["className", "columns", "columnSpacing", "component", "container", "direction", "item", "rowSpacing", "spacing", "wrap", "zeroMinWidth"];
+  const _excluded$1 = ["className", "columns", "columnSpacing", "component", "container", "direction", "item", "rowSpacing", "spacing", "wrap", "zeroMinWidth"];
   function getOffset(val) {
     const parse2 = parseFloat(val);
     return `${parse2}${String(val).replace(String(parse2), "") || "px"}`;
@@ -7566,7 +7716,7 @@
     });
     return classes;
   }
-  const useUtilityClasses = (ownerState) => {
+  const useUtilityClasses$1 = (ownerState) => {
     const {
       classes,
       container,
@@ -7614,7 +7764,7 @@
       spacing = 0,
       wrap = "wrap",
       zeroMinWidth = false
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$1);
     const rowSpacing = rowSpacingProp || spacing;
     const columnSpacing = columnSpacingProp || spacing;
     const columnsContext = React__namespace.useContext(GridContext$1);
@@ -7640,7 +7790,7 @@
     }, breakpointsValues, {
       breakpoints: breakpoints.keys
     });
-    const classes = useUtilityClasses(ownerState);
+    const classes = useUtilityClasses$1(ownerState);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(GridContext$1.Provider, {
       value: columns,
       children: /* @__PURE__ */ jsxRuntimeExports.jsx(GridRoot, _extends({
@@ -7652,6 +7802,176 @@
     });
   });
   const Grid$1 = Grid;
+  const RadioButtonUncheckedIcon = createSvgIcon$1(/* @__PURE__ */ jsxRuntimeExports.jsx("path", {
+    d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+  }), "RadioButtonUnchecked");
+  const RadioButtonCheckedIcon = createSvgIcon$1(/* @__PURE__ */ jsxRuntimeExports.jsx("path", {
+    d: "M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+  }), "RadioButtonChecked");
+  const RadioButtonIconRoot = styled$1("span")({
+    position: "relative",
+    display: "flex"
+  });
+  const RadioButtonIconBackground = styled$1(RadioButtonUncheckedIcon)({
+    // Scale applied to prevent dot misalignment in Safari
+    transform: "scale(1)"
+  });
+  const RadioButtonIconDot = styled$1(RadioButtonCheckedIcon)(({
+    theme,
+    ownerState
+  }) => _extends({
+    left: 0,
+    position: "absolute",
+    transform: "scale(0)",
+    transition: theme.transitions.create("transform", {
+      easing: theme.transitions.easing.easeIn,
+      duration: theme.transitions.duration.shortest
+    })
+  }, ownerState.checked && {
+    transform: "scale(1)",
+    transition: theme.transitions.create("transform", {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.shortest
+    })
+  }));
+  function RadioButtonIcon(props) {
+    const {
+      checked = false,
+      classes = {},
+      fontSize
+    } = props;
+    const ownerState = _extends({}, props, {
+      checked
+    });
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs(RadioButtonIconRoot, {
+      className: classes.root,
+      ownerState,
+      children: [/* @__PURE__ */ jsxRuntimeExports.jsx(RadioButtonIconBackground, {
+        fontSize,
+        className: classes.background,
+        ownerState
+      }), /* @__PURE__ */ jsxRuntimeExports.jsx(RadioButtonIconDot, {
+        fontSize,
+        className: classes.dot,
+        ownerState
+      })]
+    });
+  }
+  const RadioGroupContext = /* @__PURE__ */ React__namespace.createContext(void 0);
+  const RadioGroupContext$1 = RadioGroupContext;
+  function useRadioGroup() {
+    return React__namespace.useContext(RadioGroupContext$1);
+  }
+  function getRadioUtilityClass(slot) {
+    return generateUtilityClass("MuiRadio", slot);
+  }
+  const radioClasses = generateUtilityClasses("MuiRadio", ["root", "checked", "disabled", "colorPrimary", "colorSecondary", "sizeSmall"]);
+  const radioClasses$1 = radioClasses;
+  const _excluded = ["checked", "checkedIcon", "color", "icon", "name", "onChange", "size", "className"];
+  const useUtilityClasses = (ownerState) => {
+    const {
+      classes,
+      color: color2,
+      size
+    } = ownerState;
+    const slots = {
+      root: ["root", `color${capitalize(color2)}`, size !== "medium" && `size${capitalize(size)}`]
+    };
+    return _extends({}, classes, composeClasses(slots, getRadioUtilityClass, classes));
+  };
+  const RadioRoot = styled$1(SwitchBase$1, {
+    shouldForwardProp: (prop) => rootShouldForwardProp(prop) || prop === "classes",
+    name: "MuiRadio",
+    slot: "Root",
+    overridesResolver: (props, styles2) => {
+      const {
+        ownerState
+      } = props;
+      return [styles2.root, styles2[`color${capitalize(ownerState.color)}`]];
+    }
+  })(({
+    theme,
+    ownerState
+  }) => _extends({
+    color: (theme.vars || theme).palette.text.secondary
+  }, !ownerState.disableRipple && {
+    "&:hover": {
+      backgroundColor: theme.vars ? `rgba(${ownerState.color === "default" ? theme.vars.palette.action.activeChannel : theme.vars.palette[ownerState.color].mainChannel} / ${theme.vars.palette.action.hoverOpacity})` : alpha(ownerState.color === "default" ? theme.palette.action.active : theme.palette[ownerState.color].main, theme.palette.action.hoverOpacity),
+      // Reset on touch devices, it doesn't add specificity
+      "@media (hover: none)": {
+        backgroundColor: "transparent"
+      }
+    }
+  }, ownerState.color !== "default" && {
+    [`&.${radioClasses$1.checked}`]: {
+      color: (theme.vars || theme).palette[ownerState.color].main
+    }
+  }, {
+    [`&.${radioClasses$1.disabled}`]: {
+      color: (theme.vars || theme).palette.action.disabled
+    }
+  }));
+  function areEqualValues(a, b2) {
+    if (typeof b2 === "object" && b2 !== null) {
+      return a === b2;
+    }
+    return String(a) === String(b2);
+  }
+  const defaultCheckedIcon = /* @__PURE__ */ jsxRuntimeExports.jsx(RadioButtonIcon, {
+    checked: true
+  });
+  const defaultIcon = /* @__PURE__ */ jsxRuntimeExports.jsx(RadioButtonIcon, {});
+  const Radio = /* @__PURE__ */ React__namespace.forwardRef(function Radio2(inProps, ref) {
+    var _defaultIcon$props$fo, _defaultCheckedIcon$p;
+    const props = useThemeProps({
+      props: inProps,
+      name: "MuiRadio"
+    });
+    const {
+      checked: checkedProp,
+      checkedIcon = defaultCheckedIcon,
+      color: color2 = "primary",
+      icon = defaultIcon,
+      name: nameProp,
+      onChange: onChangeProp,
+      size = "medium",
+      className
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded);
+    const ownerState = _extends({}, props, {
+      color: color2,
+      size
+    });
+    const classes = useUtilityClasses(ownerState);
+    const radioGroup = useRadioGroup();
+    let checked = checkedProp;
+    const onChange = createChainedFunction(onChangeProp, radioGroup && radioGroup.onChange);
+    let name = nameProp;
+    if (radioGroup) {
+      if (typeof checked === "undefined") {
+        checked = areEqualValues(radioGroup.value, props.value);
+      }
+      if (typeof name === "undefined") {
+        name = radioGroup.name;
+      }
+    }
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(RadioRoot, _extends({
+      type: "radio",
+      icon: /* @__PURE__ */ React__namespace.cloneElement(icon, {
+        fontSize: (_defaultIcon$props$fo = defaultIcon.props.fontSize) != null ? _defaultIcon$props$fo : size
+      }),
+      checkedIcon: /* @__PURE__ */ React__namespace.cloneElement(checkedIcon, {
+        fontSize: (_defaultCheckedIcon$p = defaultCheckedIcon.props.fontSize) != null ? _defaultCheckedIcon$p : size
+      }),
+      ownerState,
+      classes,
+      name,
+      checked,
+      onChange,
+      ref,
+      className: clsx(classes.root, className)
+    }, other));
+  });
+  const Radio$1 = Radio;
   var Send = {};
   var interopRequireDefault = { exports: {} };
   (function(module) {
@@ -10531,7 +10851,7 @@
           /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { container: true, justifyContent: "center", children: URLGroup.map((group) => {
             return /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { item: true, xs: 4, children: group.Urls.map((item) => {
               return /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Radio,
+                Radio$1,
                 {
                   onChange: handleChange,
                   name: "radio-buttons",
