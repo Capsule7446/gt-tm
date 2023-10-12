@@ -10,7 +10,11 @@ import {
 	Paper,
 	styled,
 	Typography,
-	Radio
+	Radio,
+	FormControl,
+	FormLabel,
+	RadioGroup,
+	FormControlLabel
 } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { MyReactJson } from './MyReactJson';
@@ -87,13 +91,22 @@ export const MyDialog = (prop) => {
 							<Grid container justifyContent="center">
 								{
 									URLGroup.map(group => {
-										return (<Grid item xs={4}>
-											{group.Urls.map(item => {
-												return (<Radio onChange={handleChange} name="radio-buttons"
-													checked={selectedValue === group.Group + '-' + item.Name} value={group.Group + '-' + item.Name}
-													inputProps={{ 'aria-label': item.Url }} />)
-											})}
-										</Grid>)
+										return (<>
+											<Grid item>
+												<FormControl>
+													<FormLabel id={`radio-buttons-group-label-${group.Group}`}>{group.Group}</FormLabel>
+													<RadioGroup row aria-labelledby="radio-buttons-group-label" name="radio-buttons-group" >
+														{group.Urls.map(item => {
+															return (
+																<FormControlLabel value="female" control={<Radio onChange={handleChange} name="radio-buttons"
+																	checked={selectedValue === group.Group + '-' + item.Name} value={group.Group + '-' + item.Name}
+																	inputProps={{ 'aria-label': item.Url }} />} label={item.Name} />
+															)
+														})}
+													</RadioGroup>
+												</FormControl>
+											</Grid>
+										</>)
 									})
 								}
 							</Grid>

@@ -2076,7 +2076,7 @@
    * This source code is licensed under the MIT license found in the
    * LICENSE file in the root directory of this source tree.
    */
-  function styled$2(tag, options) {
+  function styled$3(tag, options) {
     const stylesFactory = newStyled(tag, options);
     return stylesFactory;
   }
@@ -2085,7 +2085,7 @@
       tag.__emotion_styles = processor(tag.__emotion_styles);
     }
   };
-  const _excluded$p = ["values", "unit", "step"];
+  const _excluded$v = ["values", "unit", "step"];
   const sortBreakpointsValues = (values2) => {
     const breakpointsAsArray = Object.keys(values2).map((key) => ({
       key,
@@ -2116,7 +2116,7 @@
       },
       unit = "px",
       step = 5
-    } = breakpoints, other = _objectWithoutPropertiesLoose(breakpoints, _excluded$p);
+    } = breakpoints, other = _objectWithoutPropertiesLoose(breakpoints, _excluded$v);
     const sortedValues = sortBreakpointsValues(values2);
     const keys = Object.keys(sortedValues);
     function up(key) {
@@ -2233,6 +2233,11 @@
       return acc;
     }, style2);
   }
+  function mergeBreakpointsInOrder(breakpointsInput, ...styles2) {
+    const emptyBreakpoints = createEmptyBreakpointObject(breakpointsInput);
+    const mergedOutput = [emptyBreakpoints, ...styles2].reduce((prev2, next2) => deepmerge(prev2, next2), {});
+    return removeUnusedBreakpoints(Object.keys(emptyBreakpoints), mergedOutput);
+  }
   function computeBreakpointsBase(breakpointValues, themeBreakpoints) {
     if (typeof breakpointValues !== "object") {
       return {};
@@ -2309,7 +2314,7 @@
     }
     return value;
   }
-  function style$1(options) {
+  function style$2(options) {
     const {
       prop,
       cssProperty = options.prop,
@@ -2440,17 +2445,17 @@
     const propValue = props[prop];
     return handleBreakpoints(props, propValue, styleFromPropValue);
   }
-  function style(props, keys) {
+  function style$1(props, keys) {
     const transformer = createUnarySpacing(props.theme);
     return Object.keys(props).map((prop) => resolveCssProperty(props, keys, prop, transformer)).reduce(merge, {});
   }
   function margin(props) {
-    return style(props, marginKeys);
+    return style$1(props, marginKeys);
   }
   margin.propTypes = {};
   margin.filterProps = marginKeys;
   function padding(props) {
-    return style(props, paddingKeys);
+    return style$1(props, paddingKeys);
   }
   padding.propTypes = {};
   padding.filterProps = paddingKeys;
@@ -2496,48 +2501,48 @@
     }
     return `${value}px solid`;
   }
-  const border = style$1({
+  const border = style$2({
     prop: "border",
     themeKey: "borders",
     transform: borderTransform
   });
-  const borderTop = style$1({
+  const borderTop = style$2({
     prop: "borderTop",
     themeKey: "borders",
     transform: borderTransform
   });
-  const borderRight = style$1({
+  const borderRight = style$2({
     prop: "borderRight",
     themeKey: "borders",
     transform: borderTransform
   });
-  const borderBottom = style$1({
+  const borderBottom = style$2({
     prop: "borderBottom",
     themeKey: "borders",
     transform: borderTransform
   });
-  const borderLeft = style$1({
+  const borderLeft = style$2({
     prop: "borderLeft",
     themeKey: "borders",
     transform: borderTransform
   });
-  const borderColor = style$1({
+  const borderColor = style$2({
     prop: "borderColor",
     themeKey: "palette"
   });
-  const borderTopColor = style$1({
+  const borderTopColor = style$2({
     prop: "borderTopColor",
     themeKey: "palette"
   });
-  const borderRightColor = style$1({
+  const borderRightColor = style$2({
     prop: "borderRightColor",
     themeKey: "palette"
   });
-  const borderBottomColor = style$1({
+  const borderBottomColor = style$2({
     prop: "borderBottomColor",
     themeKey: "palette"
   });
-  const borderLeftColor = style$1({
+  const borderLeftColor = style$2({
     prop: "borderLeftColor",
     themeKey: "palette"
   });
@@ -2590,31 +2595,31 @@
   };
   rowGap.propTypes = {};
   rowGap.filterProps = ["rowGap"];
-  const gridColumn = style$1({
+  const gridColumn = style$2({
     prop: "gridColumn"
   });
-  const gridRow = style$1({
+  const gridRow = style$2({
     prop: "gridRow"
   });
-  const gridAutoFlow = style$1({
+  const gridAutoFlow = style$2({
     prop: "gridAutoFlow"
   });
-  const gridAutoColumns = style$1({
+  const gridAutoColumns = style$2({
     prop: "gridAutoColumns"
   });
-  const gridAutoRows = style$1({
+  const gridAutoRows = style$2({
     prop: "gridAutoRows"
   });
-  const gridTemplateColumns = style$1({
+  const gridTemplateColumns = style$2({
     prop: "gridTemplateColumns"
   });
-  const gridTemplateRows = style$1({
+  const gridTemplateRows = style$2({
     prop: "gridTemplateRows"
   });
-  const gridTemplateAreas = style$1({
+  const gridTemplateAreas = style$2({
     prop: "gridTemplateAreas"
   });
-  const gridArea = style$1({
+  const gridArea = style$2({
     prop: "gridArea"
   });
   compose(gap, columnGap, rowGap, gridColumn, gridRow, gridAutoFlow, gridAutoColumns, gridAutoRows, gridTemplateColumns, gridTemplateRows, gridTemplateAreas, gridArea);
@@ -2624,18 +2629,18 @@
     }
     return value;
   }
-  const color = style$1({
+  const color = style$2({
     prop: "color",
     themeKey: "palette",
     transform: paletteTransform
   });
-  const bgcolor = style$1({
+  const bgcolor = style$2({
     prop: "bgcolor",
     cssProperty: "backgroundColor",
     themeKey: "palette",
     transform: paletteTransform
   });
-  const backgroundColor = style$1({
+  const backgroundColor = style$2({
     prop: "backgroundColor",
     themeKey: "palette",
     transform: paletteTransform
@@ -2644,7 +2649,7 @@
   function sizingTransform(value) {
     return value <= 1 && value !== 0 ? `${value * 100}%` : value;
   }
-  const width = style$1({
+  const width = style$2({
     prop: "width",
     transform: sizingTransform
   });
@@ -2672,33 +2677,33 @@
     return null;
   };
   maxWidth.filterProps = ["maxWidth"];
-  const minWidth = style$1({
+  const minWidth = style$2({
     prop: "minWidth",
     transform: sizingTransform
   });
-  const height = style$1({
+  const height = style$2({
     prop: "height",
     transform: sizingTransform
   });
-  const maxHeight = style$1({
+  const maxHeight = style$2({
     prop: "maxHeight",
     transform: sizingTransform
   });
-  const minHeight = style$1({
+  const minHeight = style$2({
     prop: "minHeight",
     transform: sizingTransform
   });
-  style$1({
+  style$2({
     prop: "size",
     cssProperty: "width",
     transform: sizingTransform
   });
-  style$1({
+  style$2({
     prop: "size",
     cssProperty: "height",
     transform: sizingTransform
   });
-  const boxSizing = style$1({
+  const boxSizing = style$2({
     prop: "boxSizing"
   });
   compose(width, maxWidth, minWidth, height, maxHeight, minHeight, boxSizing);
@@ -3091,14 +3096,14 @@
   const styleFunctionSx = unstable_createStyleFunctionSx();
   styleFunctionSx.filterProps = ["sx"];
   const styleFunctionSx$1 = styleFunctionSx;
-  const _excluded$o = ["breakpoints", "palette", "spacing", "shape"];
+  const _excluded$u = ["breakpoints", "palette", "spacing", "shape"];
   function createTheme$1(options = {}, ...args) {
     const {
       breakpoints: breakpointsInput = {},
       palette: paletteInput = {},
       spacing: spacingInput,
       shape: shapeInput = {}
-    } = options, other = _objectWithoutPropertiesLoose(options, _excluded$o);
+    } = options, other = _objectWithoutPropertiesLoose(options, _excluded$u);
     const breakpoints = createBreakpoints(breakpointsInput);
     const spacing = createSpacing(spacingInput);
     let muiTheme = deepmerge({
@@ -3133,7 +3138,7 @@
   function useTheme$1(defaultTheme2 = systemDefaultTheme$1) {
     return useTheme$2(defaultTheme2);
   }
-  const _excluded$n = ["sx"];
+  const _excluded$t = ["sx"];
   const splitProps = (props) => {
     var _props$theme$unstable, _props$theme;
     const result = {
@@ -3153,7 +3158,7 @@
   function extendSxProp(props) {
     const {
       sx: inSx
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$n);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$t);
     const {
       systemProps,
       otherProps
@@ -3194,14 +3199,14 @@
       (e2 = arguments[f2++]) && (t2 = r(e2)) && (n2 && (n2 += " "), n2 += t2);
     return n2;
   }
-  const _excluded$m = ["variant"];
+  const _excluded$s = ["variant"];
   function isEmpty$1(string) {
     return string.length === 0;
   }
   function propsToClassKey(props) {
     const {
       variant
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$m);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$s);
     let classKey = variant || "";
     Object.keys(other).sort().forEach((key) => {
       if (key === "color") {
@@ -3212,7 +3217,7 @@
     });
     return classKey;
   }
-  const _excluded$l = ["name", "slot", "skipVariantsResolver", "skipSx", "overridesResolver"];
+  const _excluded$r = ["name", "slot", "skipVariantsResolver", "skipSx", "overridesResolver"];
   function isEmpty(obj) {
     return Object.keys(obj).length === 0;
   }
@@ -3342,7 +3347,7 @@
         // TODO v6: remove `lowercaseFirstLetter()` in the next major release
         // For more details: https://github.com/mui/material-ui/pull/37908
         overridesResolver = defaultOverridesResolver(lowercaseFirstLetter(componentSlot))
-      } = inputOptions, options = _objectWithoutPropertiesLoose(inputOptions, _excluded$l);
+      } = inputOptions, options = _objectWithoutPropertiesLoose(inputOptions, _excluded$r);
       const skipVariantsResolver = inputSkipVariantsResolver !== void 0 ? inputSkipVariantsResolver : (
         // TODO v6: remove `Root` in the next major release
         // For more details: https://github.com/mui/material-ui/pull/37908
@@ -3358,7 +3363,7 @@
       } else if (isStringTag(tag)) {
         shouldForwardPropOption = void 0;
       }
-      const defaultStyledResolver = styled$2(tag, _extends({
+      const defaultStyledResolver = styled$3(tag, _extends({
         shouldForwardProp: shouldForwardPropOption,
         label
       }, options));
@@ -3466,6 +3471,8 @@
       return muiStyledResolver;
     };
   }
+  const styled$2 = createStyled2();
+  const systemStyled = styled$2;
   function getThemeProps(params) {
     const {
       theme,
@@ -3640,6 +3647,147 @@
     }
     return recomposeColor(color2);
   }
+  const _excluded$q = ["component", "direction", "spacing", "divider", "children", "className", "useFlexGap"];
+  const defaultTheme$2 = createTheme$1();
+  const defaultCreateStyledComponent = systemStyled("div", {
+    name: "MuiStack",
+    slot: "Root",
+    overridesResolver: (props, styles2) => styles2.root
+  });
+  function useThemePropsDefault(props) {
+    return useThemeProps$1({
+      props,
+      name: "MuiStack",
+      defaultTheme: defaultTheme$2
+    });
+  }
+  function joinChildren(children, separator) {
+    const childrenArray = React__namespace.Children.toArray(children).filter(Boolean);
+    return childrenArray.reduce((output, child, index2) => {
+      output.push(child);
+      if (index2 < childrenArray.length - 1) {
+        output.push(/* @__PURE__ */ React__namespace.cloneElement(separator, {
+          key: `separator-${index2}`
+        }));
+      }
+      return output;
+    }, []);
+  }
+  const getSideFromDirection = (direction) => {
+    return {
+      row: "Left",
+      "row-reverse": "Right",
+      column: "Top",
+      "column-reverse": "Bottom"
+    }[direction];
+  };
+  const style = ({
+    ownerState,
+    theme
+  }) => {
+    let styles2 = _extends({
+      display: "flex",
+      flexDirection: "column"
+    }, handleBreakpoints({
+      theme
+    }, resolveBreakpointValues({
+      values: ownerState.direction,
+      breakpoints: theme.breakpoints.values
+    }), (propValue) => ({
+      flexDirection: propValue
+    })));
+    if (ownerState.spacing) {
+      const transformer = createUnarySpacing(theme);
+      const base = Object.keys(theme.breakpoints.values).reduce((acc, breakpoint) => {
+        if (typeof ownerState.spacing === "object" && ownerState.spacing[breakpoint] != null || typeof ownerState.direction === "object" && ownerState.direction[breakpoint] != null) {
+          acc[breakpoint] = true;
+        }
+        return acc;
+      }, {});
+      const directionValues = resolveBreakpointValues({
+        values: ownerState.direction,
+        base
+      });
+      const spacingValues = resolveBreakpointValues({
+        values: ownerState.spacing,
+        base
+      });
+      if (typeof directionValues === "object") {
+        Object.keys(directionValues).forEach((breakpoint, index2, breakpoints) => {
+          const directionValue = directionValues[breakpoint];
+          if (!directionValue) {
+            const previousDirectionValue = index2 > 0 ? directionValues[breakpoints[index2 - 1]] : "column";
+            directionValues[breakpoint] = previousDirectionValue;
+          }
+        });
+      }
+      const styleFromPropValue = (propValue, breakpoint) => {
+        if (ownerState.useFlexGap) {
+          return {
+            gap: getValue(transformer, propValue)
+          };
+        }
+        return {
+          // The useFlexGap={false} implement relies on each child to give up control of the margin.
+          // We need to reset the margin to avoid double spacing.
+          "& > :not(style):not(style)": {
+            margin: 0
+          },
+          "& > :not(style) ~ :not(style)": {
+            [`margin${getSideFromDirection(breakpoint ? directionValues[breakpoint] : ownerState.direction)}`]: getValue(transformer, propValue)
+          }
+        };
+      };
+      styles2 = deepmerge(styles2, handleBreakpoints({
+        theme
+      }, spacingValues, styleFromPropValue));
+    }
+    styles2 = mergeBreakpointsInOrder(theme.breakpoints, styles2);
+    return styles2;
+  };
+  function createStack(options = {}) {
+    const {
+      // This will allow adding custom styled fn (for example for custom sx style function)
+      createStyledComponent = defaultCreateStyledComponent,
+      useThemeProps: useThemeProps2 = useThemePropsDefault,
+      componentName = "MuiStack"
+    } = options;
+    const useUtilityClasses2 = () => {
+      const slots = {
+        root: ["root"]
+      };
+      return composeClasses(slots, (slot) => generateUtilityClass(componentName, slot), {});
+    };
+    const StackRoot = createStyledComponent(style);
+    const Stack2 = /* @__PURE__ */ React__namespace.forwardRef(function Grid3(inProps, ref) {
+      const themeProps = useThemeProps2(inProps);
+      const props = extendSxProp(themeProps);
+      const {
+        component = "div",
+        direction = "column",
+        spacing = 0,
+        divider,
+        children,
+        className,
+        useFlexGap = false
+      } = props, other = _objectWithoutPropertiesLoose(props, _excluded$q);
+      const ownerState = {
+        direction,
+        spacing,
+        useFlexGap
+      };
+      const classes = useUtilityClasses2();
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(StackRoot, _extends({
+        as: component,
+        ownerState,
+        ref,
+        className: clsx(classes.root, className)
+      }, other, {
+        children: divider ? joinChildren(children, divider) : children
+      }));
+    });
+    return Stack2;
+  }
   function createMixins(breakpoints, mixins) {
     return _extends({
       toolbar: {
@@ -3655,7 +3803,7 @@
       }
     }, mixins);
   }
-  const _excluded$k = ["mode", "contrastThreshold", "tonalOffset"];
+  const _excluded$p = ["mode", "contrastThreshold", "tonalOffset"];
   const light = {
     // The colors used to style the text.
     text: {
@@ -3823,7 +3971,7 @@
       mode = "light",
       contrastThreshold = 3,
       tonalOffset = 0.2
-    } = palette, other = _objectWithoutPropertiesLoose(palette, _excluded$k);
+    } = palette, other = _objectWithoutPropertiesLoose(palette, _excluded$p);
     const primary = palette.primary || getDefaultPrimary(mode);
     const secondary = palette.secondary || getDefaultSecondary(mode);
     const error = palette.error || getDefaultError(mode);
@@ -3917,7 +4065,7 @@
     }, modes[mode]), other);
     return paletteOutput;
   }
-  const _excluded$j = ["fontFamily", "fontSize", "fontWeightLight", "fontWeightRegular", "fontWeightMedium", "fontWeightBold", "htmlFontSize", "allVariants", "pxToRem"];
+  const _excluded$o = ["fontFamily", "fontSize", "fontWeightLight", "fontWeightRegular", "fontWeightMedium", "fontWeightBold", "htmlFontSize", "allVariants", "pxToRem"];
   function round(value) {
     return Math.round(value * 1e5) / 1e5;
   }
@@ -3941,7 +4089,7 @@
       // Apply the CSS properties to all the variants.
       allVariants,
       pxToRem: pxToRem2
-    } = _ref, other = _objectWithoutPropertiesLoose(_ref, _excluded$j);
+    } = _ref, other = _objectWithoutPropertiesLoose(_ref, _excluded$o);
     const coef = fontSize / 14;
     const pxToRem = pxToRem2 || ((size) => `${size / htmlFontSize * coef}rem`);
     const buildVariant = (fontWeight, size, lineHeight, letterSpacing, casing) => _extends({
@@ -3998,7 +4146,7 @@
   }
   const shadows = ["none", createShadow(0, 2, 1, -1, 0, 1, 1, 0, 0, 1, 3, 0), createShadow(0, 3, 1, -2, 0, 2, 2, 0, 0, 1, 5, 0), createShadow(0, 3, 3, -2, 0, 3, 4, 0, 0, 1, 8, 0), createShadow(0, 2, 4, -1, 0, 4, 5, 0, 0, 1, 10, 0), createShadow(0, 3, 5, -1, 0, 5, 8, 0, 0, 1, 14, 0), createShadow(0, 3, 5, -1, 0, 6, 10, 0, 0, 1, 18, 0), createShadow(0, 4, 5, -2, 0, 7, 10, 1, 0, 2, 16, 1), createShadow(0, 5, 5, -3, 0, 8, 10, 1, 0, 3, 14, 2), createShadow(0, 5, 6, -3, 0, 9, 12, 1, 0, 3, 16, 2), createShadow(0, 6, 6, -3, 0, 10, 14, 1, 0, 4, 18, 3), createShadow(0, 6, 7, -4, 0, 11, 15, 1, 0, 4, 20, 3), createShadow(0, 7, 8, -4, 0, 12, 17, 2, 0, 5, 22, 4), createShadow(0, 7, 8, -4, 0, 13, 19, 2, 0, 5, 24, 4), createShadow(0, 7, 9, -4, 0, 14, 21, 2, 0, 5, 26, 4), createShadow(0, 8, 9, -5, 0, 15, 22, 2, 0, 6, 28, 5), createShadow(0, 8, 10, -5, 0, 16, 24, 2, 0, 6, 30, 5), createShadow(0, 8, 11, -5, 0, 17, 26, 2, 0, 6, 32, 5), createShadow(0, 9, 11, -5, 0, 18, 28, 2, 0, 7, 34, 6), createShadow(0, 9, 12, -6, 0, 19, 29, 2, 0, 7, 36, 6), createShadow(0, 10, 13, -6, 0, 20, 31, 3, 0, 8, 38, 7), createShadow(0, 10, 13, -6, 0, 21, 33, 3, 0, 8, 40, 7), createShadow(0, 10, 14, -6, 0, 22, 35, 3, 0, 8, 42, 7), createShadow(0, 11, 14, -7, 0, 23, 36, 3, 0, 9, 44, 8), createShadow(0, 11, 15, -7, 0, 24, 38, 3, 0, 9, 46, 8)];
   const shadows$1 = shadows;
-  const _excluded$i = ["duration", "easing", "delay"];
+  const _excluded$n = ["duration", "easing", "delay"];
   const easing = {
     // This is the most common easing curve.
     easeInOut: "cubic-bezier(0.4, 0, 0.2, 1)",
@@ -4042,7 +4190,7 @@
         easing: easingOption = mergedEasing.easeInOut,
         delay = 0
       } = options;
-      _objectWithoutPropertiesLoose(options, _excluded$i);
+      _objectWithoutPropertiesLoose(options, _excluded$n);
       return (Array.isArray(props) ? props : [props]).map((animatedProp) => `${animatedProp} ${typeof durationOption === "string" ? durationOption : formatMs(durationOption)} ${easingOption} ${typeof delay === "string" ? delay : formatMs(delay)}`).join(",");
     };
     return _extends({
@@ -4064,14 +4212,14 @@
     tooltip: 1500
   };
   const zIndex$1 = zIndex;
-  const _excluded$h = ["breakpoints", "mixins", "spacing", "palette", "transitions", "typography", "shape"];
+  const _excluded$m = ["breakpoints", "mixins", "spacing", "palette", "transitions", "typography", "shape"];
   function createTheme(options = {}, ...args) {
     const {
       mixins: mixinsInput = {},
       palette: paletteInput = {},
       transitions: transitionsInput = {},
       typography: typographyInput = {}
-    } = options, other = _objectWithoutPropertiesLoose(options, _excluded$h);
+    } = options, other = _objectWithoutPropertiesLoose(options, _excluded$m);
     if (options.vars) {
       throw new Error(formatMuiErrorMessage(18));
     }
@@ -4135,8 +4283,8 @@
     return generateUtilityClass("MuiSvgIcon", slot);
   }
   generateUtilityClasses("MuiSvgIcon", ["root", "colorPrimary", "colorSecondary", "colorAction", "colorError", "colorDisabled", "fontSizeInherit", "fontSizeSmall", "fontSizeMedium", "fontSizeLarge"]);
-  const _excluded$g = ["children", "className", "color", "component", "fontSize", "htmlColor", "inheritViewBox", "titleAccess", "viewBox"];
-  const useUtilityClasses$d = (ownerState) => {
+  const _excluded$l = ["children", "className", "color", "component", "fontSize", "htmlColor", "inheritViewBox", "titleAccess", "viewBox"];
+  const useUtilityClasses$h = (ownerState) => {
     const {
       color: color2,
       fontSize,
@@ -4202,7 +4350,7 @@
       inheritViewBox = false,
       titleAccess,
       viewBox = "0 0 24 24"
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$g);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$l);
     const hasSvgAsChild = /* @__PURE__ */ React__namespace.isValidElement(children) && children.type === "svg";
     const ownerState = _extends({}, props, {
       color: color2,
@@ -4217,7 +4365,7 @@
     if (!inheritViewBox) {
       more.viewBox = viewBox;
     }
-    const classes = useUtilityClasses$d(ownerState);
+    const classes = useUtilityClasses$h(ownerState);
     return /* @__PURE__ */ jsxRuntimeExports.jsxs(SvgIconRoot, _extends({
       as: component,
       className: clsx(classes.root, className),
@@ -4748,8 +4896,8 @@
     return generateUtilityClass("MuiPaper", slot);
   }
   generateUtilityClasses("MuiPaper", ["root", "rounded", "outlined", "elevation", "elevation0", "elevation1", "elevation2", "elevation3", "elevation4", "elevation5", "elevation6", "elevation7", "elevation8", "elevation9", "elevation10", "elevation11", "elevation12", "elevation13", "elevation14", "elevation15", "elevation16", "elevation17", "elevation18", "elevation19", "elevation20", "elevation21", "elevation22", "elevation23", "elevation24"]);
-  const _excluded$f = ["className", "component", "elevation", "square", "variant"];
-  const useUtilityClasses$c = (ownerState) => {
+  const _excluded$k = ["className", "component", "elevation", "square", "variant"];
+  const useUtilityClasses$g = (ownerState) => {
     const {
       square,
       elevation,
@@ -4802,14 +4950,14 @@
       elevation = 1,
       square = false,
       variant = "elevation"
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$f);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$k);
     const ownerState = _extends({}, props, {
       component,
       elevation,
       square,
       variant
     });
-    const classes = useUtilityClasses$c(ownerState);
+    const classes = useUtilityClasses$g(ownerState);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(PaperRoot, _extends({
       as: component,
       ownerState,
@@ -4861,7 +5009,7 @@
   }
   const touchRippleClasses = generateUtilityClasses("MuiTouchRipple", ["root", "ripple", "rippleVisible", "ripplePulsate", "child", "childLeaving", "childPulsate"]);
   const touchRippleClasses$1 = touchRippleClasses;
-  const _excluded$e = ["center", "classes", "className"];
+  const _excluded$j = ["center", "classes", "className"];
   let _ = (t2) => t2, _t, _t2, _t3, _t4;
   const DURATION = 550;
   const DELAY_RIPPLE = 80;
@@ -4976,7 +5124,7 @@
       center: centerProp = false,
       classes = {},
       className
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$e);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$j);
     const [ripples, setRipples] = React__namespace.useState([]);
     const nextKey = React__namespace.useRef(0);
     const rippleCallback = React__namespace.useRef(null);
@@ -5143,8 +5291,8 @@
   }
   const buttonBaseClasses = generateUtilityClasses("MuiButtonBase", ["root", "disabled", "focusVisible"]);
   const buttonBaseClasses$1 = buttonBaseClasses;
-  const _excluded$d = ["action", "centerRipple", "children", "className", "component", "disabled", "disableRipple", "disableTouchRipple", "focusRipple", "focusVisibleClassName", "LinkComponent", "onBlur", "onClick", "onContextMenu", "onDragLeave", "onFocus", "onFocusVisible", "onKeyDown", "onKeyUp", "onMouseDown", "onMouseLeave", "onMouseUp", "onTouchEnd", "onTouchMove", "onTouchStart", "tabIndex", "TouchRippleProps", "touchRippleRef", "type"];
-  const useUtilityClasses$b = (ownerState) => {
+  const _excluded$i = ["action", "centerRipple", "children", "className", "component", "disabled", "disableRipple", "disableTouchRipple", "focusRipple", "focusVisibleClassName", "LinkComponent", "onBlur", "onClick", "onContextMenu", "onDragLeave", "onFocus", "onFocusVisible", "onKeyDown", "onKeyUp", "onMouseDown", "onMouseLeave", "onMouseUp", "onTouchEnd", "onTouchMove", "onTouchStart", "tabIndex", "TouchRippleProps", "touchRippleRef", "type"];
+  const useUtilityClasses$f = (ownerState) => {
     const {
       disabled,
       focusVisible,
@@ -5238,7 +5386,7 @@
       TouchRippleProps,
       touchRippleRef,
       type
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$d);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$i);
     const buttonRef = React__namespace.useRef(null);
     const rippleRef = React__namespace.useRef(null);
     const handleRippleRef = useForkRef(rippleRef, touchRippleRef);
@@ -5385,7 +5533,7 @@
       tabIndex,
       focusVisible
     });
-    const classes = useUtilityClasses$b(ownerState);
+    const classes = useUtilityClasses$f(ownerState);
     return /* @__PURE__ */ jsxRuntimeExports.jsxs(ButtonBaseRoot, _extends({
       as: ComponentProp,
       className: clsx(classes.root, className),
@@ -5421,8 +5569,8 @@
     return generateUtilityClass("MuiTypography", slot);
   }
   generateUtilityClasses("MuiTypography", ["root", "h1", "h2", "h3", "h4", "h5", "h6", "subtitle1", "subtitle2", "body1", "body2", "inherit", "button", "caption", "overline", "alignLeft", "alignRight", "alignCenter", "alignJustify", "noWrap", "gutterBottom", "paragraph"]);
-  const _excluded$c = ["align", "className", "component", "gutterBottom", "noWrap", "paragraph", "variant", "variantMapping"];
-  const useUtilityClasses$a = (ownerState) => {
+  const _excluded$h = ["align", "className", "component", "gutterBottom", "noWrap", "paragraph", "variant", "variantMapping"];
+  const useUtilityClasses$e = (ownerState) => {
     const {
       align,
       gutterBottom,
@@ -5505,7 +5653,7 @@
       paragraph = false,
       variant = "body1",
       variantMapping = defaultVariantMapping
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$c);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$h);
     const ownerState = _extends({}, props, {
       align,
       color: color2,
@@ -5518,7 +5666,7 @@
       variantMapping
     });
     const Component = component || (paragraph ? "p" : variantMapping[variant] || defaultVariantMapping[variant]) || "span";
-    const classes = useUtilityClasses$a(ownerState);
+    const classes = useUtilityClasses$e(ownerState);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(TypographyRoot, _extends({
       as: Component,
       ref,
@@ -5605,7 +5753,7 @@
       internalRef: internalSlotProps.ref
     };
   }
-  const _excluded$b = ["elementType", "externalSlotProps", "ownerState", "skipResolvingSlotProps"];
+  const _excluded$g = ["elementType", "externalSlotProps", "ownerState", "skipResolvingSlotProps"];
   function useSlotProps(parameters) {
     var _parameters$additiona;
     const {
@@ -5613,7 +5761,7 @@
       externalSlotProps,
       ownerState,
       skipResolvingSlotProps = false
-    } = parameters, rest = _objectWithoutPropertiesLoose(parameters, _excluded$b);
+    } = parameters, rest = _objectWithoutPropertiesLoose(parameters, _excluded$g);
     const resolvedComponentsProps = skipResolvingSlotProps ? {} : resolveComponentProps(externalSlotProps, ownerState);
     const {
       props: mergedProps,
@@ -6214,12 +6362,36 @@
       hasTransition
     };
   }
+  function formControlState({
+    props,
+    states,
+    muiFormControl
+  }) {
+    return states.reduce((acc, state) => {
+      acc[state] = props[state];
+      if (muiFormControl) {
+        if (typeof props[state] === "undefined") {
+          acc[state] = muiFormControl[state];
+        }
+      }
+      return acc;
+    }, {});
+  }
   const FormControlContext = /* @__PURE__ */ React__namespace.createContext(void 0);
   const FormControlContext$1 = FormControlContext;
   function useFormControl() {
     return React__namespace.useContext(FormControlContext$1);
   }
-  const _excluded$a = ["addEndListener", "appear", "children", "easing", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "style", "timeout", "TransitionComponent"];
+  function hasValue(value) {
+    return value != null && !(Array.isArray(value) && value.length === 0);
+  }
+  function isFilled(obj, SSR = false) {
+    return obj && (hasValue(obj.value) && obj.value !== "" || SSR && hasValue(obj.defaultValue) && obj.defaultValue !== "");
+  }
+  function isAdornedStart(obj) {
+    return obj.startAdornment;
+  }
+  const _excluded$f = ["addEndListener", "appear", "children", "easing", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "style", "timeout", "TransitionComponent"];
   const styles = {
     entering: {
       opacity: 1
@@ -6250,7 +6422,7 @@
       timeout = defaultTimeout,
       // eslint-disable-next-line react/prop-types
       TransitionComponent = Transition$1
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$a);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$f);
     const nodeRef = React__namespace.useRef(null);
     const handleRef = useForkRef(nodeRef, children.ref, ref);
     const normalizedTransitionCallback = (callback) => (maybeIsAppearing) => {
@@ -6330,8 +6502,8 @@
     return generateUtilityClass("MuiBackdrop", slot);
   }
   generateUtilityClasses("MuiBackdrop", ["root", "invisible"]);
-  const _excluded$9 = ["children", "className", "component", "components", "componentsProps", "invisible", "open", "slotProps", "slots", "TransitionComponent", "transitionDuration"];
-  const useUtilityClasses$9 = (ownerState) => {
+  const _excluded$e = ["children", "className", "component", "components", "componentsProps", "invisible", "open", "slotProps", "slots", "TransitionComponent", "transitionDuration"];
+  const useUtilityClasses$d = (ownerState) => {
     const {
       classes,
       invisible
@@ -6384,12 +6556,12 @@
       slots = {},
       TransitionComponent = Fade$1,
       transitionDuration
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$9);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$e);
     const ownerState = _extends({}, props, {
       component,
       invisible
     });
-    const classes = useUtilityClasses$9(ownerState);
+    const classes = useUtilityClasses$d(ownerState);
     const rootSlotProps = (_slotProps$root = slotProps.root) != null ? _slotProps$root : componentsProps.root;
     return /* @__PURE__ */ jsxRuntimeExports.jsx(TransitionComponent, _extends({
       in: open,
@@ -6417,8 +6589,8 @@
   const ButtonGroupContext$1 = ButtonGroupContext;
   const ButtonGroupButtonContext = /* @__PURE__ */ React__namespace.createContext(void 0);
   const ButtonGroupButtonContext$1 = ButtonGroupButtonContext;
-  const _excluded$8 = ["children", "color", "component", "className", "disabled", "disableElevation", "disableFocusRipple", "endIcon", "focusVisibleClassName", "fullWidth", "size", "startIcon", "type", "variant"];
-  const useUtilityClasses$8 = (ownerState) => {
+  const _excluded$d = ["children", "color", "component", "className", "disabled", "disableElevation", "disableFocusRipple", "endIcon", "focusVisibleClassName", "fullWidth", "size", "startIcon", "type", "variant"];
+  const useUtilityClasses$c = (ownerState) => {
     const {
       color: color2,
       disableElevation,
@@ -6643,7 +6815,7 @@
       startIcon: startIconProp,
       type,
       variant = "text"
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$8);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$d);
     const ownerState = _extends({}, props, {
       color: color2,
       component,
@@ -6655,7 +6827,7 @@
       type,
       variant
     });
-    const classes = useUtilityClasses$8(ownerState);
+    const classes = useUtilityClasses$c(ownerState);
     const startIcon = startIconProp && /* @__PURE__ */ jsxRuntimeExports.jsx(ButtonStartIcon, {
       className: classes.startIcon,
       ownerState,
@@ -6686,8 +6858,8 @@
     return generateUtilityClass("PrivateSwitchBase", slot);
   }
   generateUtilityClasses("PrivateSwitchBase", ["root", "checked", "disabled", "input", "edgeStart", "edgeEnd"]);
-  const _excluded$7 = ["autoFocus", "checked", "checkedIcon", "className", "defaultChecked", "disabled", "disableFocusRipple", "edge", "icon", "id", "inputProps", "inputRef", "name", "onBlur", "onChange", "onFocus", "readOnly", "required", "tabIndex", "type", "value"];
-  const useUtilityClasses$7 = (ownerState) => {
+  const _excluded$c = ["autoFocus", "checked", "checkedIcon", "className", "defaultChecked", "disabled", "disableFocusRipple", "edge", "icon", "id", "inputProps", "inputRef", "name", "onBlur", "onChange", "onFocus", "readOnly", "required", "tabIndex", "type", "value"];
+  const useUtilityClasses$b = (ownerState) => {
     const {
       classes,
       checked,
@@ -6745,7 +6917,7 @@
       tabIndex,
       type,
       value
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$7);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$c);
     const [checked, setCheckedState] = useControlled({
       controlled: checkedProp,
       default: Boolean(defaultChecked),
@@ -6792,7 +6964,7 @@
       disableFocusRipple,
       edge
     });
-    const classes = useUtilityClasses$7(ownerState);
+    const classes = useUtilityClasses$b(ownerState);
     return /* @__PURE__ */ jsxRuntimeExports.jsxs(SwitchBaseRoot, _extends({
       component: "span",
       className: clsx(classes.root, className),
@@ -6831,8 +7003,8 @@
     return generateUtilityClass("MuiModal", slot);
   }
   generateUtilityClasses("MuiModal", ["root", "hidden", "backdrop"]);
-  const _excluded$6 = ["BackdropComponent", "BackdropProps", "classes", "className", "closeAfterTransition", "children", "container", "component", "components", "componentsProps", "disableAutoFocus", "disableEnforceFocus", "disableEscapeKeyDown", "disablePortal", "disableRestoreFocus", "disableScrollLock", "hideBackdrop", "keepMounted", "onBackdropClick", "onClose", "onTransitionEnter", "onTransitionExited", "open", "slotProps", "slots", "theme"];
-  const useUtilityClasses$6 = (ownerState) => {
+  const _excluded$b = ["BackdropComponent", "BackdropProps", "classes", "className", "closeAfterTransition", "children", "container", "component", "components", "componentsProps", "disableAutoFocus", "disableEnforceFocus", "disableEscapeKeyDown", "disablePortal", "disableRestoreFocus", "disableScrollLock", "hideBackdrop", "keepMounted", "onBackdropClick", "onClose", "onTransitionEnter", "onTransitionExited", "open", "slotProps", "slots", "theme"];
+  const useUtilityClasses$a = (ownerState) => {
     const {
       open,
       exited,
@@ -6904,7 +7076,7 @@
       slotProps,
       slots
       // eslint-disable-next-line react/prop-types
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$6);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$b);
     const propsWithDefaults = _extends({}, props, {
       closeAfterTransition,
       disableAutoFocus,
@@ -6930,7 +7102,7 @@
     const ownerState = _extends({}, propsWithDefaults, {
       exited
     });
-    const classes = useUtilityClasses$6(ownerState);
+    const classes = useUtilityClasses$a(ownerState);
     const childProps = {};
     if (children.props.tabIndex === void 0) {
       childProps.tabIndex = "-1";
@@ -7005,7 +7177,7 @@
   const dialogClasses$1 = dialogClasses;
   const DialogContext = /* @__PURE__ */ React__namespace.createContext({});
   const DialogContext$1 = DialogContext;
-  const _excluded$5 = ["aria-describedby", "aria-labelledby", "BackdropComponent", "BackdropProps", "children", "className", "disableEscapeKeyDown", "fullScreen", "fullWidth", "maxWidth", "onBackdropClick", "onClose", "open", "PaperComponent", "PaperProps", "scroll", "TransitionComponent", "transitionDuration", "TransitionProps"];
+  const _excluded$a = ["aria-describedby", "aria-labelledby", "BackdropComponent", "BackdropProps", "children", "className", "disableEscapeKeyDown", "fullScreen", "fullWidth", "maxWidth", "onBackdropClick", "onClose", "open", "PaperComponent", "PaperProps", "scroll", "TransitionComponent", "transitionDuration", "TransitionProps"];
   const DialogBackdrop = styled$1(Backdrop$1, {
     name: "MuiDialog",
     slot: "Backdrop",
@@ -7014,7 +7186,7 @@
     // Improve scrollable dialog support.
     zIndex: -1
   });
-  const useUtilityClasses$5 = (ownerState) => {
+  const useUtilityClasses$9 = (ownerState) => {
     const {
       classes,
       scroll,
@@ -7163,7 +7335,7 @@
       TransitionComponent = Fade$1,
       transitionDuration = defaultTransitionDuration,
       TransitionProps
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$5);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$a);
     const ownerState = _extends({}, props, {
       disableEscapeKeyDown,
       fullScreen,
@@ -7171,7 +7343,7 @@
       maxWidth: maxWidth2,
       scroll
     });
-    const classes = useUtilityClasses$5(ownerState);
+    const classes = useUtilityClasses$9(ownerState);
     const backdropClick = React__namespace.useRef();
     const handleMouseDown = (event) => {
       backdropClick.current = event.target === event.currentTarget;
@@ -7246,8 +7418,8 @@
     return generateUtilityClass("MuiDialogActions", slot);
   }
   generateUtilityClasses("MuiDialogActions", ["root", "spacing"]);
-  const _excluded$4 = ["className", "disableSpacing"];
-  const useUtilityClasses$4 = (ownerState) => {
+  const _excluded$9 = ["className", "disableSpacing"];
+  const useUtilityClasses$8 = (ownerState) => {
     const {
       classes,
       disableSpacing
@@ -7287,11 +7459,11 @@
     const {
       className,
       disableSpacing = false
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$4);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$9);
     const ownerState = _extends({}, props, {
       disableSpacing
     });
-    const classes = useUtilityClasses$4(ownerState);
+    const classes = useUtilityClasses$8(ownerState);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(DialogActionsRoot, _extends({
       className: clsx(classes.root, className),
       ownerState,
@@ -7308,8 +7480,8 @@
   }
   const dialogTitleClasses = generateUtilityClasses("MuiDialogTitle", ["root"]);
   const dialogTitleClasses$1 = dialogTitleClasses;
-  const _excluded$3 = ["className", "dividers"];
-  const useUtilityClasses$3 = (ownerState) => {
+  const _excluded$8 = ["className", "dividers"];
+  const useUtilityClasses$7 = (ownerState) => {
     const {
       classes,
       dividers
@@ -7354,11 +7526,11 @@
     const {
       className,
       dividers = false
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$3);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$8);
     const ownerState = _extends({}, props, {
       dividers
     });
-    const classes = useUtilityClasses$3(ownerState);
+    const classes = useUtilityClasses$7(ownerState);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(DialogContentRoot, _extends({
       className: clsx(classes.root, className),
       ownerState,
@@ -7366,8 +7538,8 @@
     }, other));
   });
   const DialogContent$1 = DialogContent;
-  const _excluded$2 = ["className", "id"];
-  const useUtilityClasses$2 = (ownerState) => {
+  const _excluded$7 = ["className", "id"];
+  const useUtilityClasses$6 = (ownerState) => {
     const {
       classes
     } = ownerState;
@@ -7392,9 +7564,9 @@
     const {
       className,
       id: idProp
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$2);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$7);
     const ownerState = props;
-    const classes = useUtilityClasses$2(ownerState);
+    const classes = useUtilityClasses$6(ownerState);
     const {
       titleId = idProp
     } = React__namespace.useContext(DialogContext$1);
@@ -7408,6 +7580,481 @@
     }, other));
   });
   const DialogTitle$1 = DialogTitle;
+  function getFormControlUtilityClasses(slot) {
+    return generateUtilityClass("MuiFormControl", slot);
+  }
+  generateUtilityClasses("MuiFormControl", ["root", "marginNone", "marginNormal", "marginDense", "fullWidth", "disabled"]);
+  const _excluded$6 = ["children", "className", "color", "component", "disabled", "error", "focused", "fullWidth", "hiddenLabel", "margin", "required", "size", "variant"];
+  const useUtilityClasses$5 = (ownerState) => {
+    const {
+      classes,
+      margin: margin2,
+      fullWidth
+    } = ownerState;
+    const slots = {
+      root: ["root", margin2 !== "none" && `margin${capitalize(margin2)}`, fullWidth && "fullWidth"]
+    };
+    return composeClasses(slots, getFormControlUtilityClasses, classes);
+  };
+  const FormControlRoot = styled$1("div", {
+    name: "MuiFormControl",
+    slot: "Root",
+    overridesResolver: ({
+      ownerState
+    }, styles2) => {
+      return _extends({}, styles2.root, styles2[`margin${capitalize(ownerState.margin)}`], ownerState.fullWidth && styles2.fullWidth);
+    }
+  })(({
+    ownerState
+  }) => _extends({
+    display: "inline-flex",
+    flexDirection: "column",
+    position: "relative",
+    // Reset fieldset default style.
+    minWidth: 0,
+    padding: 0,
+    margin: 0,
+    border: 0,
+    verticalAlign: "top"
+  }, ownerState.margin === "normal" && {
+    marginTop: 16,
+    marginBottom: 8
+  }, ownerState.margin === "dense" && {
+    marginTop: 8,
+    marginBottom: 4
+  }, ownerState.fullWidth && {
+    width: "100%"
+  }));
+  const FormControl = /* @__PURE__ */ React__namespace.forwardRef(function FormControl2(inProps, ref) {
+    const props = useThemeProps({
+      props: inProps,
+      name: "MuiFormControl"
+    });
+    const {
+      children,
+      className,
+      color: color2 = "primary",
+      component = "div",
+      disabled = false,
+      error = false,
+      focused: visuallyFocused,
+      fullWidth = false,
+      hiddenLabel = false,
+      margin: margin2 = "none",
+      required = false,
+      size = "medium",
+      variant = "outlined"
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$6);
+    const ownerState = _extends({}, props, {
+      color: color2,
+      component,
+      disabled,
+      error,
+      fullWidth,
+      hiddenLabel,
+      margin: margin2,
+      required,
+      size,
+      variant
+    });
+    const classes = useUtilityClasses$5(ownerState);
+    const [adornedStart, setAdornedStart] = React__namespace.useState(() => {
+      let initialAdornedStart = false;
+      if (children) {
+        React__namespace.Children.forEach(children, (child) => {
+          if (!isMuiElement(child, ["Input", "Select"])) {
+            return;
+          }
+          const input = isMuiElement(child, ["Select"]) ? child.props.input : child;
+          if (input && isAdornedStart(input.props)) {
+            initialAdornedStart = true;
+          }
+        });
+      }
+      return initialAdornedStart;
+    });
+    const [filled, setFilled] = React__namespace.useState(() => {
+      let initialFilled = false;
+      if (children) {
+        React__namespace.Children.forEach(children, (child) => {
+          if (!isMuiElement(child, ["Input", "Select"])) {
+            return;
+          }
+          if (isFilled(child.props, true) || isFilled(child.props.inputProps, true)) {
+            initialFilled = true;
+          }
+        });
+      }
+      return initialFilled;
+    });
+    const [focusedState, setFocused] = React__namespace.useState(false);
+    if (disabled && focusedState) {
+      setFocused(false);
+    }
+    const focused = visuallyFocused !== void 0 && !disabled ? visuallyFocused : focusedState;
+    let registerEffect;
+    const childContext = React__namespace.useMemo(() => {
+      return {
+        adornedStart,
+        setAdornedStart,
+        color: color2,
+        disabled,
+        error,
+        filled,
+        focused,
+        fullWidth,
+        hiddenLabel,
+        size,
+        onBlur: () => {
+          setFocused(false);
+        },
+        onEmpty: () => {
+          setFilled(false);
+        },
+        onFilled: () => {
+          setFilled(true);
+        },
+        onFocus: () => {
+          setFocused(true);
+        },
+        registerEffect,
+        required,
+        variant
+      };
+    }, [adornedStart, color2, disabled, error, filled, focused, fullWidth, hiddenLabel, registerEffect, required, size, variant]);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(FormControlContext$1.Provider, {
+      value: childContext,
+      children: /* @__PURE__ */ jsxRuntimeExports.jsx(FormControlRoot, _extends({
+        as: component,
+        ownerState,
+        className: clsx(classes.root, className),
+        ref
+      }, other, {
+        children
+      }))
+    });
+  });
+  const FormControl$1 = FormControl;
+  const Stack = createStack({
+    createStyledComponent: styled$1("div", {
+      name: "MuiStack",
+      slot: "Root",
+      overridesResolver: (props, styles2) => styles2.root
+    }),
+    useThemeProps: (inProps) => useThemeProps({
+      props: inProps,
+      name: "MuiStack"
+    })
+  });
+  const Stack$1 = Stack;
+  function getFormControlLabelUtilityClasses(slot) {
+    return generateUtilityClass("MuiFormControlLabel", slot);
+  }
+  const formControlLabelClasses = generateUtilityClasses("MuiFormControlLabel", ["root", "labelPlacementStart", "labelPlacementTop", "labelPlacementBottom", "disabled", "label", "error", "required", "asterisk"]);
+  const formControlLabelClasses$1 = formControlLabelClasses;
+  const _excluded$5 = ["checked", "className", "componentsProps", "control", "disabled", "disableTypography", "inputRef", "label", "labelPlacement", "name", "onChange", "required", "slotProps", "value"];
+  const useUtilityClasses$4 = (ownerState) => {
+    const {
+      classes,
+      disabled,
+      labelPlacement,
+      error,
+      required
+    } = ownerState;
+    const slots = {
+      root: ["root", disabled && "disabled", `labelPlacement${capitalize(labelPlacement)}`, error && "error", required && "required"],
+      label: ["label", disabled && "disabled"],
+      asterisk: ["asterisk", error && "error"]
+    };
+    return composeClasses(slots, getFormControlLabelUtilityClasses, classes);
+  };
+  const FormControlLabelRoot = styled$1("label", {
+    name: "MuiFormControlLabel",
+    slot: "Root",
+    overridesResolver: (props, styles2) => {
+      const {
+        ownerState
+      } = props;
+      return [{
+        [`& .${formControlLabelClasses$1.label}`]: styles2.label
+      }, styles2.root, styles2[`labelPlacement${capitalize(ownerState.labelPlacement)}`]];
+    }
+  })(({
+    theme,
+    ownerState
+  }) => _extends({
+    display: "inline-flex",
+    alignItems: "center",
+    cursor: "pointer",
+    // For correct alignment with the text.
+    verticalAlign: "middle",
+    WebkitTapHighlightColor: "transparent",
+    marginLeft: -11,
+    marginRight: 16,
+    // used for row presentation of radio/checkbox
+    [`&.${formControlLabelClasses$1.disabled}`]: {
+      cursor: "default"
+    }
+  }, ownerState.labelPlacement === "start" && {
+    flexDirection: "row-reverse",
+    marginLeft: 16,
+    // used for row presentation of radio/checkbox
+    marginRight: -11
+  }, ownerState.labelPlacement === "top" && {
+    flexDirection: "column-reverse",
+    marginLeft: 16
+  }, ownerState.labelPlacement === "bottom" && {
+    flexDirection: "column",
+    marginLeft: 16
+  }, {
+    [`& .${formControlLabelClasses$1.label}`]: {
+      [`&.${formControlLabelClasses$1.disabled}`]: {
+        color: (theme.vars || theme).palette.text.disabled
+      }
+    }
+  }));
+  const AsteriskComponent$1 = styled$1("span", {
+    name: "MuiFormControlLabel",
+    slot: "Asterisk",
+    overridesResolver: (props, styles2) => styles2.asterisk
+  })(({
+    theme
+  }) => ({
+    [`&.${formControlLabelClasses$1.error}`]: {
+      color: (theme.vars || theme).palette.error.main
+    }
+  }));
+  const FormControlLabel = /* @__PURE__ */ React__namespace.forwardRef(function FormControlLabel2(inProps, ref) {
+    var _ref, _slotProps$typography;
+    const props = useThemeProps({
+      props: inProps,
+      name: "MuiFormControlLabel"
+    });
+    const {
+      className,
+      componentsProps = {},
+      control,
+      disabled: disabledProp,
+      disableTypography,
+      label: labelProp,
+      labelPlacement = "end",
+      required: requiredProp,
+      slotProps = {}
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$5);
+    const muiFormControl = useFormControl();
+    const disabled = (_ref = disabledProp != null ? disabledProp : control.props.disabled) != null ? _ref : muiFormControl == null ? void 0 : muiFormControl.disabled;
+    const required = requiredProp != null ? requiredProp : control.props.required;
+    const controlProps = {
+      disabled,
+      required
+    };
+    ["checked", "name", "onChange", "value", "inputRef"].forEach((key) => {
+      if (typeof control.props[key] === "undefined" && typeof props[key] !== "undefined") {
+        controlProps[key] = props[key];
+      }
+    });
+    const fcs = formControlState({
+      props,
+      muiFormControl,
+      states: ["error"]
+    });
+    const ownerState = _extends({}, props, {
+      disabled,
+      labelPlacement,
+      required,
+      error: fcs.error
+    });
+    const classes = useUtilityClasses$4(ownerState);
+    const typographySlotProps = (_slotProps$typography = slotProps.typography) != null ? _slotProps$typography : componentsProps.typography;
+    let label = labelProp;
+    if (label != null && label.type !== Typography$1 && !disableTypography) {
+      label = /* @__PURE__ */ jsxRuntimeExports.jsx(Typography$1, _extends({
+        component: "span"
+      }, typographySlotProps, {
+        className: clsx(classes.label, typographySlotProps == null ? void 0 : typographySlotProps.className),
+        children: label
+      }));
+    }
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs(FormControlLabelRoot, _extends({
+      className: clsx(classes.root, className),
+      ownerState,
+      ref
+    }, other, {
+      children: [/* @__PURE__ */ React__namespace.cloneElement(control, controlProps), required ? /* @__PURE__ */ jsxRuntimeExports.jsxs(Stack$1, {
+        direction: "row",
+        alignItems: "center",
+        children: [label, /* @__PURE__ */ jsxRuntimeExports.jsxs(AsteriskComponent$1, {
+          ownerState,
+          "aria-hidden": true,
+          className: classes.asterisk,
+          children: [" ", "*"]
+        })]
+      }) : label]
+    }));
+  });
+  const FormControlLabel$1 = FormControlLabel;
+  function getFormGroupUtilityClass(slot) {
+    return generateUtilityClass("MuiFormGroup", slot);
+  }
+  generateUtilityClasses("MuiFormGroup", ["root", "row", "error"]);
+  const _excluded$4 = ["className", "row"];
+  const useUtilityClasses$3 = (ownerState) => {
+    const {
+      classes,
+      row,
+      error
+    } = ownerState;
+    const slots = {
+      root: ["root", row && "row", error && "error"]
+    };
+    return composeClasses(slots, getFormGroupUtilityClass, classes);
+  };
+  const FormGroupRoot = styled$1("div", {
+    name: "MuiFormGroup",
+    slot: "Root",
+    overridesResolver: (props, styles2) => {
+      const {
+        ownerState
+      } = props;
+      return [styles2.root, ownerState.row && styles2.row];
+    }
+  })(({
+    ownerState
+  }) => _extends({
+    display: "flex",
+    flexDirection: "column",
+    flexWrap: "wrap"
+  }, ownerState.row && {
+    flexDirection: "row"
+  }));
+  const FormGroup = /* @__PURE__ */ React__namespace.forwardRef(function FormGroup2(inProps, ref) {
+    const props = useThemeProps({
+      props: inProps,
+      name: "MuiFormGroup"
+    });
+    const {
+      className,
+      row = false
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$4);
+    const muiFormControl = useFormControl();
+    const fcs = formControlState({
+      props,
+      muiFormControl,
+      states: ["error"]
+    });
+    const ownerState = _extends({}, props, {
+      row,
+      error: fcs.error
+    });
+    const classes = useUtilityClasses$3(ownerState);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(FormGroupRoot, _extends({
+      className: clsx(classes.root, className),
+      ownerState,
+      ref
+    }, other));
+  });
+  const FormGroup$1 = FormGroup;
+  function getFormLabelUtilityClasses(slot) {
+    return generateUtilityClass("MuiFormLabel", slot);
+  }
+  const formLabelClasses = generateUtilityClasses("MuiFormLabel", ["root", "colorSecondary", "focused", "disabled", "error", "filled", "required", "asterisk"]);
+  const formLabelClasses$1 = formLabelClasses;
+  const _excluded$3 = ["children", "className", "color", "component", "disabled", "error", "filled", "focused", "required"];
+  const useUtilityClasses$2 = (ownerState) => {
+    const {
+      classes,
+      color: color2,
+      focused,
+      disabled,
+      error,
+      filled,
+      required
+    } = ownerState;
+    const slots = {
+      root: ["root", `color${capitalize(color2)}`, disabled && "disabled", error && "error", filled && "filled", focused && "focused", required && "required"],
+      asterisk: ["asterisk", error && "error"]
+    };
+    return composeClasses(slots, getFormLabelUtilityClasses, classes);
+  };
+  const FormLabelRoot = styled$1("label", {
+    name: "MuiFormLabel",
+    slot: "Root",
+    overridesResolver: ({
+      ownerState
+    }, styles2) => {
+      return _extends({}, styles2.root, ownerState.color === "secondary" && styles2.colorSecondary, ownerState.filled && styles2.filled);
+    }
+  })(({
+    theme,
+    ownerState
+  }) => _extends({
+    color: (theme.vars || theme).palette.text.secondary
+  }, theme.typography.body1, {
+    lineHeight: "1.4375em",
+    padding: 0,
+    position: "relative",
+    [`&.${formLabelClasses$1.focused}`]: {
+      color: (theme.vars || theme).palette[ownerState.color].main
+    },
+    [`&.${formLabelClasses$1.disabled}`]: {
+      color: (theme.vars || theme).palette.text.disabled
+    },
+    [`&.${formLabelClasses$1.error}`]: {
+      color: (theme.vars || theme).palette.error.main
+    }
+  }));
+  const AsteriskComponent = styled$1("span", {
+    name: "MuiFormLabel",
+    slot: "Asterisk",
+    overridesResolver: (props, styles2) => styles2.asterisk
+  })(({
+    theme
+  }) => ({
+    [`&.${formLabelClasses$1.error}`]: {
+      color: (theme.vars || theme).palette.error.main
+    }
+  }));
+  const FormLabel = /* @__PURE__ */ React__namespace.forwardRef(function FormLabel2(inProps, ref) {
+    const props = useThemeProps({
+      props: inProps,
+      name: "MuiFormLabel"
+    });
+    const {
+      children,
+      className,
+      component = "label"
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$3);
+    const muiFormControl = useFormControl();
+    const fcs = formControlState({
+      props,
+      muiFormControl,
+      states: ["color", "required", "focused", "disabled", "error", "filled"]
+    });
+    const ownerState = _extends({}, props, {
+      color: fcs.color || "primary",
+      component,
+      disabled: fcs.disabled,
+      error: fcs.error,
+      filled: fcs.filled,
+      focused: fcs.focused,
+      required: fcs.required
+    });
+    const classes = useUtilityClasses$2(ownerState);
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs(FormLabelRoot, _extends({
+      as: component,
+      ownerState,
+      className: clsx(classes.root, className),
+      ref
+    }, other, {
+      children: [children, fcs.required && /* @__PURE__ */ jsxRuntimeExports.jsxs(AsteriskComponent, {
+        ownerState,
+        "aria-hidden": true,
+        className: classes.asterisk,
+        children: [" ", "*"]
+      })]
+    }));
+  });
+  const FormLabel$1 = FormLabel;
   const GridContext = /* @__PURE__ */ React__namespace.createContext();
   const GridContext$1 = GridContext;
   function getGridUtilityClass(slot) {
@@ -7435,7 +8082,7 @@
     ...GRID_SIZES.map((size) => `grid-lg-${size}`),
     ...GRID_SIZES.map((size) => `grid-xl-${size}`)
   ]);
-  const _excluded$1 = ["className", "columns", "columnSpacing", "component", "container", "direction", "item", "rowSpacing", "spacing", "wrap", "zeroMinWidth"];
+  const _excluded$2 = ["className", "columns", "columnSpacing", "component", "container", "direction", "item", "rowSpacing", "spacing", "wrap", "zeroMinWidth"];
   function getOffset(val) {
     const parse2 = parseFloat(val);
     return `${parse2}${String(val).replace(String(parse2), "") || "px"}`;
@@ -7764,7 +8411,7 @@
       spacing = 0,
       wrap = "wrap",
       zeroMinWidth = false
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$1);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$2);
     const rowSpacing = rowSpacingProp || spacing;
     const columnSpacing = columnSpacingProp || spacing;
     const columnsContext = React__namespace.useContext(GridContext$1);
@@ -7867,7 +8514,7 @@
   }
   const radioClasses = generateUtilityClasses("MuiRadio", ["root", "checked", "disabled", "colorPrimary", "colorSecondary", "sizeSmall"]);
   const radioClasses$1 = radioClasses;
-  const _excluded = ["checked", "checkedIcon", "color", "icon", "name", "onChange", "size", "className"];
+  const _excluded$1 = ["checked", "checkedIcon", "color", "icon", "name", "onChange", "size", "className"];
   const useUtilityClasses = (ownerState) => {
     const {
       classes,
@@ -7936,7 +8583,7 @@
       onChange: onChangeProp,
       size = "medium",
       className
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$1);
     const ownerState = _extends({}, props, {
       color: color2,
       size
@@ -7972,6 +8619,58 @@
     }, other));
   });
   const Radio$1 = Radio;
+  const _excluded = ["actions", "children", "defaultValue", "name", "onChange", "value"];
+  const RadioGroup = /* @__PURE__ */ React__namespace.forwardRef(function RadioGroup2(props, ref) {
+    const {
+      // private
+      // eslint-disable-next-line react/prop-types
+      actions,
+      children,
+      defaultValue,
+      name: nameProp,
+      onChange,
+      value: valueProp
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded);
+    const rootRef = React__namespace.useRef(null);
+    const [value, setValueState] = useControlled({
+      controlled: valueProp,
+      default: defaultValue,
+      name: "RadioGroup"
+    });
+    React__namespace.useImperativeHandle(actions, () => ({
+      focus: () => {
+        let input = rootRef.current.querySelector("input:not(:disabled):checked");
+        if (!input) {
+          input = rootRef.current.querySelector("input:not(:disabled)");
+        }
+        if (input) {
+          input.focus();
+        }
+      }
+    }), []);
+    const handleRef = useForkRef(ref, rootRef);
+    const name = useId(nameProp);
+    const contextValue = React__namespace.useMemo(() => ({
+      name,
+      onChange(event) {
+        setValueState(event.target.value);
+        if (onChange) {
+          onChange(event, event.target.value);
+        }
+      },
+      value
+    }), [name, onChange, setValueState, value]);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(RadioGroupContext$1.Provider, {
+      value: contextValue,
+      children: /* @__PURE__ */ jsxRuntimeExports.jsx(FormGroup$1, _extends({
+        role: "radiogroup",
+        ref: handleRef
+      }, other, {
+        children
+      }))
+    });
+  });
+  const RadioGroup$1 = RadioGroup;
   var Send = {};
   var interopRequireDefault = { exports: {} };
   (function(module) {
@@ -10850,18 +11549,21 @@
             }
           }) }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { container: true, justifyContent: "center", children: URLGroup.map((group) => {
-            return /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { item: true, xs: 4, children: group.Urls.map((item) => {
-              return /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Radio$1,
-                {
-                  onChange: handleChange,
-                  name: "radio-buttons",
-                  checked: selectedValue === group.Group + "-" + item.Name,
-                  value: group.Group + "-" + item.Name,
-                  inputProps: { "aria-label": item.Url }
-                }
-              );
-            }) });
+            return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { item: true, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(FormControl$1, { children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(FormLabel$1, { id: `radio-buttons-group-label-${group.Group}`, children: group.Group }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(RadioGroup$1, { row: true, "aria-labelledby": "radio-buttons-group-label", name: "radio-buttons-group", children: group.Urls.map((item) => {
+                return /* @__PURE__ */ jsxRuntimeExports.jsx(FormControlLabel$1, { value: "female", control: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  Radio$1,
+                  {
+                    onChange: handleChange,
+                    name: "radio-buttons",
+                    checked: selectedValue === group.Group + "-" + item.Name,
+                    value: group.Group + "-" + item.Name,
+                    inputProps: { "aria-label": item.Url }
+                  }
+                ), label: item.Name });
+              }) })
+            ] }) }) });
           }) })
         ] }) }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { item: true, xs: 6, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(MyDialogPaperStyled, { children: [

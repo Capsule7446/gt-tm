@@ -18,8 +18,8 @@ function App() {
 				setOpen(true)
 				setRqData({ "demo": "demo" })
 			}
-			item.appendChild(btn)
 			//TODO: append button
+			item.appendChild(btn)
 		})
 	}, [])
 	return <MyDialog open={open} setOpen={setOpen} rqData={rqData} />
