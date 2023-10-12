@@ -20,6 +20,7 @@ import {
 } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { MyReactJson } from './MyReactJson';
+import { useState } from 'react';
 
 const jsonMockData = {
 	"string": "this is jsonMockData test string",
@@ -63,11 +64,13 @@ export const MyDialog = (prop) => {
 	const [groupIndex, setGroupIndex] = React.useState(0)
 	const [itemIndex, setItemIndex] = React.useState(0)
 	const [url, setUrl] = React.useState('')
+	const [rsData, setRsData] = useState()
 	const handleChange = (groupI, itemI) => {
 		setGroupIndex(groupI)
 		setItemIndex(itemI)
 		setUrl(URLGroup[groupI].Urls[itemI].Url)
 	};
+
 	const textChange = (e) => {
 		setUrl(e.target.value)
 	}
@@ -136,7 +139,7 @@ export const MyDialog = (prop) => {
 						<MyDialogPaperStyled>
 							<Typography variant="h5" component="h5">Response Data</Typography>
 							<hr />
-							<MyReactJson data={jsonMockData} />
+							<MyReactJson data={rsData} />
 						</MyDialogPaperStyled>
 					</Grid>
 				</Grid>
