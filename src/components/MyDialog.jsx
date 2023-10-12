@@ -21,6 +21,7 @@ import {
 import SendIcon from '@mui/icons-material/Send';
 import { MyReactJson } from './MyReactJson';
 import { useState } from 'react';
+import { URLGroup } from '../data';
 
 const jsonMockData = {
 	"string": "this is jsonMockData test string",
@@ -49,16 +50,6 @@ const MyDialogPaperStyled = styled(Paper)(({ theme }) => ({
 	color: theme.palette.text.secondary,
 	padding: theme.spacing(1),
 }));
-
-const URLGroup = [
-	{
-		Group: "UAT",
-		Urls: [
-			{ Name: "DEMO", Url: "http://demo1" },
-			{ Name: "DEMO2", Url: "http://demo2" },
-		]
-	}
-]
 
 export const MyDialog = (prop) => {
 	const [groupIndex, setGroupIndex] = React.useState(0)
@@ -103,26 +94,24 @@ export const MyDialog = (prop) => {
 						<Grid container justifyContent={'center'}>
 							{
 								URLGroup.map((group, groupI) => {
-									return (<>
-										<Grid item>
-											<MyDialogPaperStyled>
-												<FormControl>
-													<FormLabel id={`radio-buttons-group-label-${group.Group}`}>{group.Group}</FormLabel>
-													<RadioGroup row aria-labelledby="radio-buttons-group-label" name="radio-buttons-group" >
-														{group.Urls.map((item, itemI) => {
-															return (
-																<FormControlLabel value={groupI + '-' + itemI}
-																	control={<Radio
-																		onChange={() => handleChange(groupI, itemI)}
-																		name="radio-buttons" />}
-																	label={item.Name} />
-															)
-														})}
-													</RadioGroup>
-												</FormControl>
-											</MyDialogPaperStyled>
-										</Grid>
-									</>)
+									return (<Grid item>
+										<MyDialogPaperStyled>
+											<FormControl>
+												<FormLabel id={`radio-buttons-group-label-${group.Group}`}>{group.Group}</FormLabel>
+												<RadioGroup row aria-labelledby="radio-buttons-group-label" name="radio-buttons-group" >
+													{group.Urls.map((item, itemI) => {
+														return (
+															<FormControlLabel value={groupI + '-' + itemI}
+																control={<Radio
+																	onChange={() => handleChange(groupI, itemI)}
+																	name="radio-buttons" />}
+																label={item.Name} />
+														)
+													})}
+												</RadioGroup>
+											</FormControl>
+										</MyDialogPaperStyled>
+									</Grid>)
 								})
 							}
 						</Grid>

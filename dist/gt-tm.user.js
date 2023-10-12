@@ -12455,13 +12455,6 @@
       }
     );
   };
-  const MyDialogPaperStyled = styled$1(Paper$1)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-    ...theme.typography.button,
-    textAlign: "left",
-    color: theme.palette.text.secondary,
-    padding: theme.spacing(1)
-  }));
   const URLGroup = [
     {
       Group: "UAT",
@@ -12471,6 +12464,13 @@
       ]
     }
   ];
+  const MyDialogPaperStyled = styled$1(Paper$1)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+    ...theme.typography.button,
+    textAlign: "left",
+    color: theme.palette.text.secondary,
+    padding: theme.spacing(1)
+  }));
   const MyDialog = (prop) => {
     const [groupIndex, setGroupIndex] = React__namespace.useState(0);
     const [itemIndex, setItemIndex] = React__namespace.useState(0);
@@ -12512,7 +12512,7 @@
           ) }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
           /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { container: true, justifyContent: "center", children: URLGroup.map((group, groupI) => {
-            return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { item: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(MyDialogPaperStyled, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(FormControl$1, { children: [
+            return /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { item: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(MyDialogPaperStyled, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(FormControl$1, { children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx(FormLabel$1, { id: `radio-buttons-group-label-${group.Group}`, children: group.Group }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(RadioGroup$1, { row: true, "aria-labelledby": "radio-buttons-group-label", name: "radio-buttons-group", children: group.Urls.map((item, itemI) => {
                 return /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -12530,7 +12530,7 @@
                   }
                 );
               }) })
-            ] }) }) }) });
+            ] }) }) });
           }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { item: true, xs: 6, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(MyDialogPaperStyled, { children: [
