@@ -76,7 +76,7 @@ export const MyDialog = (prop) => {
 			<DialogTitle>NMSL</DialogTitle>
 			<DialogContent>
 				<Grid container spacing={2}>
-					<Grid item xs={12} >
+					<Grid item xs={12}>
 						<Grid container justifyContent="center">
 							<Grid item xs={9}>
 								<Paper
@@ -96,26 +96,27 @@ export const MyDialog = (prop) => {
 								</Paper>
 							</Grid>
 						</Grid>
-						<Grid container justifyContent={'left'}>
+						<br />
+						<Grid container justifyContent={'center'}>
 							{
 								URLGroup.map((group, groupI) => {
 									return (<>
 										<Grid item>
-										<MyDialogPaperStyled>
-											<FormControl>
-												<FormLabel id={`radio-buttons-group-label-${group.Group}`}>{group.Group}</FormLabel>
-												<RadioGroup row aria-labelledby="radio-buttons-group-label" name="radio-buttons-group" >
-													{group.Urls.map((item, itemI) => {
-														return (
-															<FormControlLabel value={groupI + '-' + itemI}
-																control={<Radio
-																	onChange={() => handleChange(groupI, itemI)}
-																	name="radio-buttons" />}
-																label={item.Name} />
-														)
-													})}
-												</RadioGroup>
-											</FormControl>
+											<MyDialogPaperStyled>
+												<FormControl>
+													<FormLabel id={`radio-buttons-group-label-${group.Group}`}>{group.Group}</FormLabel>
+													<RadioGroup row aria-labelledby="radio-buttons-group-label" name="radio-buttons-group" >
+														{group.Urls.map((item, itemI) => {
+															return (
+																<FormControlLabel value={groupI + '-' + itemI}
+																	control={<Radio
+																		onChange={() => handleChange(groupI, itemI)}
+																		name="radio-buttons" />}
+																	label={item.Name} />
+															)
+														})}
+													</RadioGroup>
+												</FormControl>
 											</MyDialogPaperStyled>
 										</Grid>
 									</>)

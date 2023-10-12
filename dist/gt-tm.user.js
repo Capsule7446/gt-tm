@@ -12528,7 +12528,8 @@
               ]
             }
           ) }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { container: true, justifyContent: "left", children: URLGroup.map((group, groupI) => {
+          /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { container: true, justifyContent: "center", children: URLGroup.map((group, groupI) => {
             return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { item: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(MyDialogPaperStyled, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(FormControl$1, { children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx(FormLabel$1, { id: `radio-buttons-group-label-${group.Group}`, children: group.Group }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(RadioGroup$1, { row: true, "aria-labelledby": "radio-buttons-group-label", name: "radio-buttons-group", children: group.Urls.map((item, itemI) => {
