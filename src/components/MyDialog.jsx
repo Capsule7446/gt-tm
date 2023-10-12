@@ -59,9 +59,13 @@ const URLGroup = [
 ]
 
 export const MyDialog = (prop) => {
-	const [selectedValue, setSelectedValue] = React.useState(URLGroup[0].group + URLGroup[0].Urls[0].Url);
-	const handleChange = (event) => {
-		setSelectedValue(event.target.value);
+	const [groupIndex, setGroupIndex] = React.useState(0)
+	const [itemIndex, setItemIndex] = React.useState(0)
+	const [url, setUrl] = React.useState('')
+	const handleChange = (groupI, itemI) => {
+		setGroupIndex(groupI)
+		setItemIndex(itemI)
+		setUrl(URLGroup[groupI].Urls[itemI].Url)
 	};
 	return (
 		<Dialog fullWidth={true} maxWidth={'xl'} open={prop.open} onClose={() => prop.setOpen(false)}>
@@ -71,29 +75,13 @@ export const MyDialog = (prop) => {
 					<Grid item xs={12} >
 						<MyDialogPaperStyled>
 							<Grid container justifyContent="center">
-								<Grid item xs={10}>
-									{
-										URLGroup.map(group => {
-											if (group.Group == selectedValue.split('-')[0]) {
-												return group.Urls.map(item => {
-													if (item.Name == selectedValue.split('-')[1]) {
-														return (<TextField
-															id="standard-multiline-flexible"
-															label="Multiline"
-															multiline
-															maxRows={4}
-															value={item.Url}
-															variant="standard"
-														/>)
-													} else {
-														return <></>
-													}
-												})
-											} else {
-												return <></>
-											}
-										})
-									}
+								<Grid item>
+									<TextField
+										id="standard-multiline-flexible"
+										multiline
+										value={url}
+										onChange={(e) = setUrl(e.target.value)}
+										variant="standard" />
 								</Grid>
 								<Grid item xs={2}>
 									<MyDialogPaperStyled style={{ display: "flex", justifyContent: "center" }}>
@@ -103,17 +91,19 @@ export const MyDialog = (prop) => {
 							</Grid>
 							<Grid container justifyContent="center">
 								{
-									URLGroup.map(group => {
+									URLGroup.map((group, groupI) => {
 										return (<>
 											<Grid item>
 												<FormControl>
 													<FormLabel id={`radio-buttons-group-label-${group.Group}`}>{group.Group}</FormLabel>
 													<RadioGroup row aria-labelledby="radio-buttons-group-label" name="radio-buttons-group" >
-														{group.Urls.map(item => {
+														{group.Urls.map((item, itemI) => {
 															return (
-																<FormControlLabel value="female" control={<Radio onChange={handleChange} name="radio-buttons"
-																	checked={selectedValue === group.Group + '-' + item.Name} value={group.Group + '-' + item.Name}
-																	inputProps={{ 'aria-label': item.Url }} />} label={item.Name} />
+																<FormControlLabel value="female"
+																	control={<Radio
+																		onChange={() => handleChange(groupI, itemI)}
+																		name="radio-buttons" />}
+																	label={item.Name} />
 															)
 														})}
 													</RadioGroup>
