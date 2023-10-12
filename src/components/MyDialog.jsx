@@ -19,7 +19,7 @@ import {
 	IconButton
 } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
-import { MyReactJson } from './MyReactJson';
+import { MyDataView } from './MyDataView';
 import { useState } from 'react';
 import { URLGroup } from '../data';
 
@@ -121,14 +121,14 @@ export const MyDialog = (prop) => {
 						<MyDialogPaperStyled>
 							<Typography variant="h5" component="h5">Request Data</Typography>
 							<hr />
-							<MyReactJson data={prop.rqData} />
+							<MyDataView data={prop.rqData} />
 						</MyDialogPaperStyled>
 					</Grid>
 					<Grid item xs={6}>
 						<MyDialogPaperStyled>
 							<Typography variant="h5" component="h5">Response Data</Typography>
 							<hr />
-							<MyReactJson data={rsData} />
+							<MyDataView data={rsData} />
 						</MyDialogPaperStyled>
 					</Grid>
 				</Grid>

@@ -12441,19 +12441,41 @@
   })(main);
   var mainExports = main.exports;
   const ReactJson = /* @__PURE__ */ getDefaultExportFromCjs(mainExports);
-  const MyReactJson = (prop) => {
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(
-      ReactJson,
-      {
-        src: prop.data,
-        displayDataTypes: false,
-        iconStyle: "square",
-        displayObjectSize: false,
-        collapseStringsAfterLength: false,
-        collapsed: 2,
-        enableClipboard: (copy2) => navigator.clipboard.writeText(JSON.stringify(copy2.src))
+  const MyDataView = (prop) => {
+    const xml = "XML";
+    const json = "JSON";
+    const unk = "Unknown";
+    const determineDataType = (parameter) => {
+      try {
+        const jsonData = JSON.parse(parameter);
+        return json;
+      } catch (jsonError) {
+        try {
+          const parser = new DOMParser();
+          const xmlData = parser.parseFromString(parameter, "application/xml");
+          if (xmlData.getElementsByTagName("parsererror").length === 0) {
+            return xml;
+          }
+        } catch (xmlError) {
+        }
       }
-    );
+      return unk;
+    };
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+      determineDataType(prop.data) == json ? /* @__PURE__ */ jsxRuntimeExports.jsx(
+        ReactJson,
+        {
+          src: prop.data,
+          displayDataTypes: false,
+          iconStyle: "square",
+          displayObjectSize: false,
+          collapseStringsAfterLength: false,
+          collapsed: 2,
+          enableClipboard: (copy2) => navigator.clipboard.writeText(JSON.stringify(copy2.src))
+        }
+      ) : /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}),
+      determineDataType(prop.data) == xml ? /* @__PURE__ */ jsxRuntimeExports.jsx(XMLViewer, { xml: prop.data }) : /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {})
+    ] });
   };
   const URLGroup = [
     {
@@ -12536,12 +12558,12 @@
         /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { item: true, xs: 6, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(MyDialogPaperStyled, { children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(Typography$1, { variant: "h5", component: "h5", children: "Request Data" }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("hr", {}),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(MyReactJson, { data: prop.rqData })
+          /* @__PURE__ */ jsxRuntimeExports.jsx(MyDataView, { data: prop.rqData })
         ] }) }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { item: true, xs: 6, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(MyDialogPaperStyled, { children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(Typography$1, { variant: "h5", component: "h5", children: "Response Data" }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("hr", {}),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(MyReactJson, { data: rsData })
+          /* @__PURE__ */ jsxRuntimeExports.jsx(MyDataView, { data: rsData })
         ] }) })
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(DialogActions$1, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { onClick: () => prop.setOpen(false), children: "Close" }) })
