@@ -79,7 +79,7 @@ export const MyDialog = (prop) => {
 					<Grid item xs={12} >
 						<MyDialogPaperStyled>
 							<Grid container justifyContent="center">
-								<Grid item>
+								<Grid item xs={8}>
 									<Paper
 										component="form"
 										sx={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}

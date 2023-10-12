@@ -12506,7 +12506,7 @@
       /* @__PURE__ */ jsxRuntimeExports.jsx(DialogTitle$1, { children: "NMSL" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(DialogContent$1, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Grid$1, { container: true, spacing: 2, children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { item: true, xs: 12, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(MyDialogPaperStyled, { children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { container: true, justifyContent: "center", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { item: true, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { container: true, justifyContent: "center", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { item: true, xs: 8, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
             Paper$1,
             {
               component: "form",
