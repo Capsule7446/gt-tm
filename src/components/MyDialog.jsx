@@ -67,7 +67,7 @@ export const MyDialog = (prop) => {
 		setItemIndex(itemI)
 		setUrl(URLGroup[groupI].Urls[itemI].Url)
 	};
-	const textChange = (e) =>{
+	const textChange = (e) => {
 		setUrl(e.target.value)
 	}
 	return (
@@ -79,17 +79,22 @@ export const MyDialog = (prop) => {
 						<MyDialogPaperStyled>
 							<Grid container justifyContent="center">
 								<Grid item>
-									<TextField
-										id="standard-multiline-flexible"
-										multiline
-										value={url}
-										onChange={textChange}
-										variant="standard" />
-								</Grid>
-								<Grid item xs={2}>
-									<MyDialogPaperStyled style={{ display: "flex", justifyContent: "center" }}>
-										<Button variant="contained" endIcon={<SendIcon />}>Send</Button>
-									</MyDialogPaperStyled>
+									<Paper
+										component="form"
+										sx={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}
+									>
+										<InputBase
+											sx={{ ml: 1, flex: 1 }}
+											placeholder="Search Google Maps"
+											inputProps={{ 'aria-label': 'search google maps' }}
+											onChange={textChange}
+											value={url}
+										/>
+										<Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+										<IconButton type="button" sx={{ p: '10px' }} aria-label="search" onClick={() => { console.log('send') }}>
+											<SendIcon />
+										</IconButton>
+									</Paper>
 								</Grid>
 							</Grid>
 							<Grid container justifyContent="center">
@@ -102,7 +107,7 @@ export const MyDialog = (prop) => {
 													<RadioGroup row aria-labelledby="radio-buttons-group-label" name="radio-buttons-group" >
 														{group.Urls.map((item, itemI) => {
 															return (
-																<FormControlLabel value={groupI+'-'+itemI}
+																<FormControlLabel value={groupI + '-' + itemI}
 																	control={<Radio
 																		onChange={() => handleChange(groupI, itemI)}
 																		name="radio-buttons" />}
