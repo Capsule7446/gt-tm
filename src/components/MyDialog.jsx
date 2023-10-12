@@ -14,7 +14,8 @@ import {
 	FormControl,
 	FormLabel,
 	RadioGroup,
-	FormControlLabel
+	FormControlLabel,
+	TextField
 } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { MyReactJson } from './MyReactJson';
@@ -58,7 +59,7 @@ const URLGroup = [
 ]
 
 export const MyDialog = (prop) => {
-	const [selectedValue, setSelectedValue] = React.useState(URLGroup[0].group + URLGroup[0].Urls[0].Name);
+	const [selectedValue, setSelectedValue] = React.useState(URLGroup[0].group + URLGroup[0].Urls[0].Url);
 	const handleChange = (event) => {
 		setSelectedValue(event.target.value);
 	};
@@ -76,7 +77,14 @@ export const MyDialog = (prop) => {
 											if (group.Group == selectedValue.split('-')[0]) {
 												return group.Urls.map(item => {
 													if (item.Name == selectedValue.split('-')[1]) {
-														return (<Typography variant="h6" gutterBottom>{item.Url}</Typography>)
+														return (<TextField
+															id="standard-multiline-flexible"
+															label="Multiline"
+															multiline
+															maxRows={4}
+															value={item.Url}
+															variant="standard"
+														/>)
 													} else {
 														return <></>
 													}
@@ -86,6 +94,11 @@ export const MyDialog = (prop) => {
 											}
 										})
 									}
+								</Grid>
+								<Grid item xs={2}>
+									<MyDialogPaperStyled style={{ display: "flex", justifyContent: "center" }}>
+										<Button variant="contained" endIcon={<SendIcon />}>Send</Button>
+									</MyDialogPaperStyled>
 								</Grid>
 							</Grid>
 							<Grid container justifyContent="center">
@@ -124,11 +137,6 @@ export const MyDialog = (prop) => {
 							<Typography variant="h5" component="h5">Response Data</Typography>
 							<hr />
 							<MyReactJson data={jsonMockData} />
-						</MyDialogPaperStyled>
-					</Grid>
-					<Grid item xs={12}>
-						<MyDialogPaperStyled style={{ display: "flex", justifyContent: "center" }}>
-							<Button variant="contained" endIcon={<SendIcon />}>Send</Button>
 						</MyDialogPaperStyled>
 					</Grid>
 				</Grid>
