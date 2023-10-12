@@ -1,8 +1,4 @@
 import * as React from 'react';
-import Paper from '@mui/material/Paper';
-import InputBase from '@mui/material/InputBase';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
 import {
 	Button,
 	Dialog,
@@ -19,7 +15,8 @@ import {
 	RadioGroup,
 	FormControlLabel,
 	InputBase,
-	Divider
+	Divider,
+	IconButton
 } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { MyReactJson } from './MyReactJson';

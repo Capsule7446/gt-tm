@@ -2145,7 +2145,7 @@
       tag.__emotion_styles = processor(tag.__emotion_styles);
     }
   };
-  const _excluded$y = ["values", "unit", "step"];
+  const _excluded$z = ["values", "unit", "step"];
   const sortBreakpointsValues = (values2) => {
     const breakpointsAsArray = Object.keys(values2).map((key) => ({
       key,
@@ -2176,7 +2176,7 @@
       },
       unit = "px",
       step = 5
-    } = breakpoints, other = _objectWithoutPropertiesLoose(breakpoints, _excluded$y);
+    } = breakpoints, other = _objectWithoutPropertiesLoose(breakpoints, _excluded$z);
     const sortedValues = sortBreakpointsValues(values2);
     const keys = Object.keys(sortedValues);
     function up(key) {
@@ -3156,14 +3156,14 @@
   const styleFunctionSx = unstable_createStyleFunctionSx();
   styleFunctionSx.filterProps = ["sx"];
   const styleFunctionSx$1 = styleFunctionSx;
-  const _excluded$x = ["breakpoints", "palette", "spacing", "shape"];
+  const _excluded$y = ["breakpoints", "palette", "spacing", "shape"];
   function createTheme$1(options = {}, ...args) {
     const {
       breakpoints: breakpointsInput = {},
       palette: paletteInput = {},
       spacing: spacingInput,
       shape: shapeInput = {}
-    } = options, other = _objectWithoutPropertiesLoose(options, _excluded$x);
+    } = options, other = _objectWithoutPropertiesLoose(options, _excluded$y);
     const breakpoints = createBreakpoints(breakpointsInput);
     const spacing = createSpacing(spacingInput);
     let muiTheme = deepmerge({
@@ -3209,7 +3209,7 @@
       styles: globalStyles
     });
   }
-  const _excluded$w = ["sx"];
+  const _excluded$x = ["sx"];
   const splitProps = (props) => {
     var _props$theme$unstable, _props$theme;
     const result = {
@@ -3229,7 +3229,7 @@
   function extendSxProp(props) {
     const {
       sx: inSx
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$w);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$x);
     const {
       systemProps,
       otherProps
@@ -3270,14 +3270,14 @@
       (e2 = arguments[f2++]) && (t2 = r(e2)) && (n2 && (n2 += " "), n2 += t2);
     return n2;
   }
-  const _excluded$v = ["variant"];
+  const _excluded$w = ["variant"];
   function isEmpty$2(string) {
     return string.length === 0;
   }
   function propsToClassKey(props) {
     const {
       variant
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$v);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$w);
     let classKey = variant || "";
     Object.keys(other).sort().forEach((key) => {
       if (key === "color") {
@@ -3288,7 +3288,7 @@
     });
     return classKey;
   }
-  const _excluded$u = ["name", "slot", "skipVariantsResolver", "skipSx", "overridesResolver"];
+  const _excluded$v = ["name", "slot", "skipVariantsResolver", "skipSx", "overridesResolver"];
   function isEmpty$1(obj) {
     return Object.keys(obj).length === 0;
   }
@@ -3418,7 +3418,7 @@
         // TODO v6: remove `lowercaseFirstLetter()` in the next major release
         // For more details: https://github.com/mui/material-ui/pull/37908
         overridesResolver = defaultOverridesResolver(lowercaseFirstLetter(componentSlot))
-      } = inputOptions, options = _objectWithoutPropertiesLoose(inputOptions, _excluded$u);
+      } = inputOptions, options = _objectWithoutPropertiesLoose(inputOptions, _excluded$v);
       const skipVariantsResolver = inputSkipVariantsResolver !== void 0 ? inputSkipVariantsResolver : (
         // TODO v6: remove `Root` in the next major release
         // For more details: https://github.com/mui/material-ui/pull/37908
@@ -3718,7 +3718,7 @@
     }
     return recomposeColor(color2);
   }
-  const _excluded$t = ["component", "direction", "spacing", "divider", "children", "className", "useFlexGap"];
+  const _excluded$u = ["component", "direction", "spacing", "divider", "children", "className", "useFlexGap"];
   const defaultTheme$2 = createTheme$1();
   const defaultCreateStyledComponent = systemStyled("div", {
     name: "MuiStack",
@@ -3841,7 +3841,7 @@
         children,
         className,
         useFlexGap = false
-      } = props, other = _objectWithoutPropertiesLoose(props, _excluded$t);
+      } = props, other = _objectWithoutPropertiesLoose(props, _excluded$u);
       const ownerState = {
         direction,
         spacing,
@@ -3874,7 +3874,7 @@
       }
     }, mixins);
   }
-  const _excluded$s = ["mode", "contrastThreshold", "tonalOffset"];
+  const _excluded$t = ["mode", "contrastThreshold", "tonalOffset"];
   const light = {
     // The colors used to style the text.
     text: {
@@ -4042,7 +4042,7 @@
       mode = "light",
       contrastThreshold = 3,
       tonalOffset = 0.2
-    } = palette, other = _objectWithoutPropertiesLoose(palette, _excluded$s);
+    } = palette, other = _objectWithoutPropertiesLoose(palette, _excluded$t);
     const primary = palette.primary || getDefaultPrimary(mode);
     const secondary = palette.secondary || getDefaultSecondary(mode);
     const error = palette.error || getDefaultError(mode);
@@ -4136,7 +4136,7 @@
     }, modes[mode]), other);
     return paletteOutput;
   }
-  const _excluded$r = ["fontFamily", "fontSize", "fontWeightLight", "fontWeightRegular", "fontWeightMedium", "fontWeightBold", "htmlFontSize", "allVariants", "pxToRem"];
+  const _excluded$s = ["fontFamily", "fontSize", "fontWeightLight", "fontWeightRegular", "fontWeightMedium", "fontWeightBold", "htmlFontSize", "allVariants", "pxToRem"];
   function round(value) {
     return Math.round(value * 1e5) / 1e5;
   }
@@ -4160,7 +4160,7 @@
       // Apply the CSS properties to all the variants.
       allVariants,
       pxToRem: pxToRem2
-    } = _ref, other = _objectWithoutPropertiesLoose(_ref, _excluded$r);
+    } = _ref, other = _objectWithoutPropertiesLoose(_ref, _excluded$s);
     const coef = fontSize / 14;
     const pxToRem = pxToRem2 || ((size) => `${size / htmlFontSize * coef}rem`);
     const buildVariant = (fontWeight, size, lineHeight, letterSpacing, casing) => _extends({
@@ -4217,7 +4217,7 @@
   }
   const shadows = ["none", createShadow(0, 2, 1, -1, 0, 1, 1, 0, 0, 1, 3, 0), createShadow(0, 3, 1, -2, 0, 2, 2, 0, 0, 1, 5, 0), createShadow(0, 3, 3, -2, 0, 3, 4, 0, 0, 1, 8, 0), createShadow(0, 2, 4, -1, 0, 4, 5, 0, 0, 1, 10, 0), createShadow(0, 3, 5, -1, 0, 5, 8, 0, 0, 1, 14, 0), createShadow(0, 3, 5, -1, 0, 6, 10, 0, 0, 1, 18, 0), createShadow(0, 4, 5, -2, 0, 7, 10, 1, 0, 2, 16, 1), createShadow(0, 5, 5, -3, 0, 8, 10, 1, 0, 3, 14, 2), createShadow(0, 5, 6, -3, 0, 9, 12, 1, 0, 3, 16, 2), createShadow(0, 6, 6, -3, 0, 10, 14, 1, 0, 4, 18, 3), createShadow(0, 6, 7, -4, 0, 11, 15, 1, 0, 4, 20, 3), createShadow(0, 7, 8, -4, 0, 12, 17, 2, 0, 5, 22, 4), createShadow(0, 7, 8, -4, 0, 13, 19, 2, 0, 5, 24, 4), createShadow(0, 7, 9, -4, 0, 14, 21, 2, 0, 5, 26, 4), createShadow(0, 8, 9, -5, 0, 15, 22, 2, 0, 6, 28, 5), createShadow(0, 8, 10, -5, 0, 16, 24, 2, 0, 6, 30, 5), createShadow(0, 8, 11, -5, 0, 17, 26, 2, 0, 6, 32, 5), createShadow(0, 9, 11, -5, 0, 18, 28, 2, 0, 7, 34, 6), createShadow(0, 9, 12, -6, 0, 19, 29, 2, 0, 7, 36, 6), createShadow(0, 10, 13, -6, 0, 20, 31, 3, 0, 8, 38, 7), createShadow(0, 10, 13, -6, 0, 21, 33, 3, 0, 8, 40, 7), createShadow(0, 10, 14, -6, 0, 22, 35, 3, 0, 8, 42, 7), createShadow(0, 11, 14, -7, 0, 23, 36, 3, 0, 9, 44, 8), createShadow(0, 11, 15, -7, 0, 24, 38, 3, 0, 9, 46, 8)];
   const shadows$1 = shadows;
-  const _excluded$q = ["duration", "easing", "delay"];
+  const _excluded$r = ["duration", "easing", "delay"];
   const easing = {
     // This is the most common easing curve.
     easeInOut: "cubic-bezier(0.4, 0, 0.2, 1)",
@@ -4261,7 +4261,7 @@
         easing: easingOption = mergedEasing.easeInOut,
         delay = 0
       } = options;
-      _objectWithoutPropertiesLoose(options, _excluded$q);
+      _objectWithoutPropertiesLoose(options, _excluded$r);
       return (Array.isArray(props) ? props : [props]).map((animatedProp) => `${animatedProp} ${typeof durationOption === "string" ? durationOption : formatMs(durationOption)} ${easingOption} ${typeof delay === "string" ? delay : formatMs(delay)}`).join(",");
     };
     return _extends({
@@ -4283,14 +4283,14 @@
     tooltip: 1500
   };
   const zIndex$1 = zIndex;
-  const _excluded$p = ["breakpoints", "mixins", "spacing", "palette", "transitions", "typography", "shape"];
+  const _excluded$q = ["breakpoints", "mixins", "spacing", "palette", "transitions", "typography", "shape"];
   function createTheme(options = {}, ...args) {
     const {
       mixins: mixinsInput = {},
       palette: paletteInput = {},
       transitions: transitionsInput = {},
       typography: typographyInput = {}
-    } = options, other = _objectWithoutPropertiesLoose(options, _excluded$p);
+    } = options, other = _objectWithoutPropertiesLoose(options, _excluded$q);
     if (options.vars) {
       throw new Error(formatMuiErrorMessage(18));
     }
@@ -4354,8 +4354,8 @@
     return generateUtilityClass("MuiSvgIcon", slot);
   }
   generateUtilityClasses("MuiSvgIcon", ["root", "colorPrimary", "colorSecondary", "colorAction", "colorError", "colorDisabled", "fontSizeInherit", "fontSizeSmall", "fontSizeMedium", "fontSizeLarge"]);
-  const _excluded$o = ["children", "className", "color", "component", "fontSize", "htmlColor", "inheritViewBox", "titleAccess", "viewBox"];
-  const useUtilityClasses$j = (ownerState) => {
+  const _excluded$p = ["children", "className", "color", "component", "fontSize", "htmlColor", "inheritViewBox", "titleAccess", "viewBox"];
+  const useUtilityClasses$k = (ownerState) => {
     const {
       color: color2,
       fontSize,
@@ -4421,7 +4421,7 @@
       inheritViewBox = false,
       titleAccess,
       viewBox = "0 0 24 24"
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$o);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$p);
     const hasSvgAsChild = /* @__PURE__ */ React__namespace.isValidElement(children) && children.type === "svg";
     const ownerState = _extends({}, props, {
       color: color2,
@@ -4436,7 +4436,7 @@
     if (!inheritViewBox) {
       more.viewBox = viewBox;
     }
-    const classes = useUtilityClasses$j(ownerState);
+    const classes = useUtilityClasses$k(ownerState);
     return /* @__PURE__ */ jsxRuntimeExports.jsxs(SvgIconRoot, _extends({
       as: component,
       className: clsx(classes.root, className),
@@ -4967,8 +4967,8 @@
     return generateUtilityClass("MuiPaper", slot);
   }
   generateUtilityClasses("MuiPaper", ["root", "rounded", "outlined", "elevation", "elevation0", "elevation1", "elevation2", "elevation3", "elevation4", "elevation5", "elevation6", "elevation7", "elevation8", "elevation9", "elevation10", "elevation11", "elevation12", "elevation13", "elevation14", "elevation15", "elevation16", "elevation17", "elevation18", "elevation19", "elevation20", "elevation21", "elevation22", "elevation23", "elevation24"]);
-  const _excluded$n = ["className", "component", "elevation", "square", "variant"];
-  const useUtilityClasses$i = (ownerState) => {
+  const _excluded$o = ["className", "component", "elevation", "square", "variant"];
+  const useUtilityClasses$j = (ownerState) => {
     const {
       square,
       elevation,
@@ -5021,14 +5021,14 @@
       elevation = 1,
       square = false,
       variant = "elevation"
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$n);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$o);
     const ownerState = _extends({}, props, {
       component,
       elevation,
       square,
       variant
     });
-    const classes = useUtilityClasses$i(ownerState);
+    const classes = useUtilityClasses$j(ownerState);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(PaperRoot, _extends({
       as: component,
       ownerState,
@@ -5080,7 +5080,7 @@
   }
   const touchRippleClasses = generateUtilityClasses("MuiTouchRipple", ["root", "ripple", "rippleVisible", "ripplePulsate", "child", "childLeaving", "childPulsate"]);
   const touchRippleClasses$1 = touchRippleClasses;
-  const _excluded$m = ["center", "classes", "className"];
+  const _excluded$n = ["center", "classes", "className"];
   let _ = (t2) => t2, _t, _t2, _t3, _t4;
   const DURATION = 550;
   const DELAY_RIPPLE = 80;
@@ -5195,7 +5195,7 @@
       center: centerProp = false,
       classes = {},
       className
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$m);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$n);
     const [ripples, setRipples] = React__namespace.useState([]);
     const nextKey = React__namespace.useRef(0);
     const rippleCallback = React__namespace.useRef(null);
@@ -5362,8 +5362,8 @@
   }
   const buttonBaseClasses = generateUtilityClasses("MuiButtonBase", ["root", "disabled", "focusVisible"]);
   const buttonBaseClasses$1 = buttonBaseClasses;
-  const _excluded$l = ["action", "centerRipple", "children", "className", "component", "disabled", "disableRipple", "disableTouchRipple", "focusRipple", "focusVisibleClassName", "LinkComponent", "onBlur", "onClick", "onContextMenu", "onDragLeave", "onFocus", "onFocusVisible", "onKeyDown", "onKeyUp", "onMouseDown", "onMouseLeave", "onMouseUp", "onTouchEnd", "onTouchMove", "onTouchStart", "tabIndex", "TouchRippleProps", "touchRippleRef", "type"];
-  const useUtilityClasses$h = (ownerState) => {
+  const _excluded$m = ["action", "centerRipple", "children", "className", "component", "disabled", "disableRipple", "disableTouchRipple", "focusRipple", "focusVisibleClassName", "LinkComponent", "onBlur", "onClick", "onContextMenu", "onDragLeave", "onFocus", "onFocusVisible", "onKeyDown", "onKeyUp", "onMouseDown", "onMouseLeave", "onMouseUp", "onTouchEnd", "onTouchMove", "onTouchStart", "tabIndex", "TouchRippleProps", "touchRippleRef", "type"];
+  const useUtilityClasses$i = (ownerState) => {
     const {
       disabled,
       focusVisible,
@@ -5457,7 +5457,7 @@
       TouchRippleProps,
       touchRippleRef,
       type
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$l);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$m);
     const buttonRef = React__namespace.useRef(null);
     const rippleRef = React__namespace.useRef(null);
     const handleRippleRef = useForkRef(rippleRef, touchRippleRef);
@@ -5604,7 +5604,7 @@
       tabIndex,
       focusVisible
     });
-    const classes = useUtilityClasses$h(ownerState);
+    const classes = useUtilityClasses$i(ownerState);
     return /* @__PURE__ */ jsxRuntimeExports.jsxs(ButtonBaseRoot, _extends({
       as: ComponentProp,
       className: clsx(classes.root, className),
@@ -5636,6 +5636,127 @@
     }));
   });
   const ButtonBase$1 = ButtonBase;
+  function getIconButtonUtilityClass(slot) {
+    return generateUtilityClass("MuiIconButton", slot);
+  }
+  const iconButtonClasses = generateUtilityClasses("MuiIconButton", ["root", "disabled", "colorInherit", "colorPrimary", "colorSecondary", "colorError", "colorInfo", "colorSuccess", "colorWarning", "edgeStart", "edgeEnd", "sizeSmall", "sizeMedium", "sizeLarge"]);
+  const iconButtonClasses$1 = iconButtonClasses;
+  const _excluded$l = ["edge", "children", "className", "color", "disabled", "disableFocusRipple", "size"];
+  const useUtilityClasses$h = (ownerState) => {
+    const {
+      classes,
+      disabled,
+      color: color2,
+      edge,
+      size
+    } = ownerState;
+    const slots = {
+      root: ["root", disabled && "disabled", color2 !== "default" && `color${capitalize(color2)}`, edge && `edge${capitalize(edge)}`, `size${capitalize(size)}`]
+    };
+    return composeClasses(slots, getIconButtonUtilityClass, classes);
+  };
+  const IconButtonRoot = styled$1(ButtonBase$1, {
+    name: "MuiIconButton",
+    slot: "Root",
+    overridesResolver: (props, styles2) => {
+      const {
+        ownerState
+      } = props;
+      return [styles2.root, ownerState.color !== "default" && styles2[`color${capitalize(ownerState.color)}`], ownerState.edge && styles2[`edge${capitalize(ownerState.edge)}`], styles2[`size${capitalize(ownerState.size)}`]];
+    }
+  })(({
+    theme,
+    ownerState
+  }) => _extends({
+    textAlign: "center",
+    flex: "0 0 auto",
+    fontSize: theme.typography.pxToRem(24),
+    padding: 8,
+    borderRadius: "50%",
+    overflow: "visible",
+    // Explicitly set the default value to solve a bug on IE11.
+    color: (theme.vars || theme).palette.action.active,
+    transition: theme.transitions.create("background-color", {
+      duration: theme.transitions.duration.shortest
+    })
+  }, !ownerState.disableRipple && {
+    "&:hover": {
+      backgroundColor: theme.vars ? `rgba(${theme.vars.palette.action.activeChannel} / ${theme.vars.palette.action.hoverOpacity})` : alpha(theme.palette.action.active, theme.palette.action.hoverOpacity),
+      // Reset on touch devices, it doesn't add specificity
+      "@media (hover: none)": {
+        backgroundColor: "transparent"
+      }
+    }
+  }, ownerState.edge === "start" && {
+    marginLeft: ownerState.size === "small" ? -3 : -12
+  }, ownerState.edge === "end" && {
+    marginRight: ownerState.size === "small" ? -3 : -12
+  }), ({
+    theme,
+    ownerState
+  }) => {
+    var _palette;
+    const palette = (_palette = (theme.vars || theme).palette) == null ? void 0 : _palette[ownerState.color];
+    return _extends({}, ownerState.color === "inherit" && {
+      color: "inherit"
+    }, ownerState.color !== "inherit" && ownerState.color !== "default" && _extends({
+      color: palette == null ? void 0 : palette.main
+    }, !ownerState.disableRipple && {
+      "&:hover": _extends({}, palette && {
+        backgroundColor: theme.vars ? `rgba(${palette.mainChannel} / ${theme.vars.palette.action.hoverOpacity})` : alpha(palette.main, theme.palette.action.hoverOpacity)
+      }, {
+        // Reset on touch devices, it doesn't add specificity
+        "@media (hover: none)": {
+          backgroundColor: "transparent"
+        }
+      })
+    }), ownerState.size === "small" && {
+      padding: 5,
+      fontSize: theme.typography.pxToRem(18)
+    }, ownerState.size === "large" && {
+      padding: 12,
+      fontSize: theme.typography.pxToRem(28)
+    }, {
+      [`&.${iconButtonClasses$1.disabled}`]: {
+        backgroundColor: "transparent",
+        color: (theme.vars || theme).palette.action.disabled
+      }
+    });
+  });
+  const IconButton = /* @__PURE__ */ React__namespace.forwardRef(function IconButton2(inProps, ref) {
+    const props = useThemeProps({
+      props: inProps,
+      name: "MuiIconButton"
+    });
+    const {
+      edge = false,
+      children,
+      className,
+      color: color2 = "default",
+      disabled = false,
+      disableFocusRipple = false,
+      size = "medium"
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded$l);
+    const ownerState = _extends({}, props, {
+      edge,
+      color: color2,
+      disabled,
+      disableFocusRipple,
+      size
+    });
+    const classes = useUtilityClasses$h(ownerState);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(IconButtonRoot, _extends({
+      className: clsx(classes.root, className),
+      centerRipple: true,
+      focusRipple: !disableFocusRipple,
+      disabled,
+      ref,
+      ownerState
+    }, other, {
+      children
+    }));
+  });
+  const IconButton$1 = IconButton;
   function getTypographyUtilityClass(slot) {
     return generateUtilityClass("MuiTypography", slot);
   }
@@ -12402,7 +12523,7 @@
                   }
                 ),
                 /* @__PURE__ */ jsxRuntimeExports.jsx(Divider$1, { sx: { height: 28, m: 0.5 }, orientation: "vertical" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx(IconButton, { type: "button", sx: { p: "10px" }, "aria-label": "search", onClick: () => {
+                /* @__PURE__ */ jsxRuntimeExports.jsx(IconButton$1, { type: "button", sx: { p: "10px" }, "aria-label": "search", onClick: () => {
                   console.log("send");
                 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(default_1, {}) })
               ]
