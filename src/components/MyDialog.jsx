@@ -42,42 +42,85 @@ const MyDialogPaperStyled = styled(Paper)(({ theme }) => ({
 	padding: theme.spacing(1),
 }));
 
+const URLGroup = [
+	{
+		Group: "",
+		Urls: [
+			{ Name: "", Url: "" },
+		]
+	}
+]
 
-
-export const MyDialog = () => {
-	const [open, setOpen] = useState(true)
-	return (<Dialog fullWidth={true} maxWidth={'xl'} open={open} onClose={() => setOpen(false)}>
-		<DialogTitle>電文【】</DialogTitle>
-		<DialogContent>
-			<Grid container spacing={2}>
-				<Grid item xs={12}>
-					<MyDialogPaperStyled>
-
-					</MyDialogPaperStyled>
+export const MyDialog = (prop) => {
+	const [selectedValue, setSelectedValue] = React.useState(URLGroup[0].group + URLGroup[0].Urls[0].Name);
+	const handleChange = (event) => {
+		setSelectedValue(event.target.value);
+	};
+	return (
+		<Dialog fullWidth={true} maxWidth={'xl'} open={prop.open} onClose={() => prop.setOpen(false)}>
+			<DialogTitle>NMSL</DialogTitle>
+			<DialogContent>
+				<Grid container spacing={2}>
+					<Grid item xs={12} >
+						<MyDialogPaperStyled>
+							<Grid container justifyContent="center">
+								<Grid item xs={10}>
+									{
+										URLGroup.map(group => {
+											if (group.Group == selectedValue.split('-')[0]) {
+												return group.Urls.map(item => {
+													if (item.Name == selectedValue.split('-')[1]) {
+														return (<Typography variant="h6" gutterBottom>{item.Url}</Typography>)
+													} else {
+														return <></>
+													}
+												})
+											} else {
+												return <></>
+											}
+										})
+									}
+								</Grid>
+							</Grid>
+							<Grid container justifyContent="center">
+								{
+									URLGroup.map(group => {
+										return (<Grid item xs={4}>
+											{group.Urls.map(item => {
+												return (<Radio onChange={handleChange} name="radio-buttons"
+													checked={selectedValue === group.Group + '-' + item.Name} value={group.Group + '-' + item.Name}
+													inputProps={{ 'aria-label': item.Url }} />)
+											})}
+										</Grid>)
+									})
+								}
+							</Grid>
+						</MyDialogPaperStyled>
+					</Grid>
+					<Grid item xs={6}>
+						<MyDialogPaperStyled>
+							<Typography variant="h5" component="h5">Request Data</Typography>
+							<hr />
+							<MyReactJson data={prop.rqData} />
+						</MyDialogPaperStyled>
+					</Grid>
+					<Grid item xs={6}>
+						<MyDialogPaperStyled>
+							<Typography variant="h5" component="h5">Response Data</Typography>
+							<hr />
+							<MyReactJson data={jsonMockData} />
+						</MyDialogPaperStyled>
+					</Grid>
+					<Grid item xs={12}>
+						<MyDialogPaperStyled style={{ display: "flex", justifyContent: "center" }}>
+							<Button variant="contained" endIcon={<SendIcon />}>Send</Button>
+						</MyDialogPaperStyled>
+					</Grid>
 				</Grid>
-				<Grid item xs={6}>
-					<MyDialogPaperStyled>
-						<Typography variant="h5" component="h5">Request Data</Typography>
-						<hr />
-						<MyReactJson data={jsonMockData} />
-					</MyDialogPaperStyled>
-				</Grid>
-				<Grid item xs={6}>
-					<MyDialogPaperStyled>
-						<Typography variant="h5" component="h5">Response Data</Typography>
-						<hr />
-						<MyReactJson data={jsonMockData} />
-					</MyDialogPaperStyled>
-				</Grid>
-				<Grid item xs={12}>
-					<MyDialogPaperStyled style={{ display: "flex", justifyContent: "center" }}>
-						<Button variant="contained" endIcon={<SendIcon />}>Send</Button>
-					</MyDialogPaperStyled>
-				</Grid>
-			</Grid>
-		</DialogContent>
-		<DialogActions>
-			<Button onClick={() => setOpen(false)}>Close</Button>
-		</DialogActions>
-	</Dialog>)
+			</DialogContent>
+			<DialogActions>
+				<Button onClick={() => prop.setOpen(false)}>Close</Button>
+			</DialogActions>
+		</Dialog>
+	)
 }
