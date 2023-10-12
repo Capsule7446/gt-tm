@@ -12516,7 +12516,6 @@
                   InputBase$1,
                   {
                     sx: { ml: 1, flex: 1 },
-                    placeholder: "Search Google Maps",
                     inputProps: { "aria-label": "search google maps" },
                     onChange: textChange,
                     value: url
