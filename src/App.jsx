@@ -12,6 +12,7 @@ function App() {
 		nodes.forEach(item => {
 			//TODO: create button
 			const btn = document.createElement('button')
+			btn.innerText = 'demo'
 			// btn
 			btn.onclick = () => {
 				setOpen(true)

@@ -10820,9 +10820,10 @@
   }));
   const URLGroup = [
     {
-      Group: "",
+      Group: "UAT",
       Urls: [
-        { Name: "", Url: "" }
+        { Name: "DEMO", Url: "http://demo1" },
+        { Name: "DEMO2", Url: "http://demo2" }
       ]
     }
   ];
@@ -10888,6 +10889,7 @@
       const nodes = findBindingNode();
       nodes.forEach((item) => {
         const btn = document.createElement("button");
+        btn.innerText = "demo";
         btn.onclick = () => {
           setOpen(true);
           setRqData({ "demo": "demo" });

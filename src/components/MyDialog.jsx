@@ -45,9 +45,10 @@ const MyDialogPaperStyled = styled(Paper)(({ theme }) => ({
 
 const URLGroup = [
 	{
-		Group: "",
+		Group: "UAT",
 		Urls: [
-			{ Name: "", Url: "" },
+			{ Name: "DEMO", Url: "http://demo1" },
+			{ Name: "DEMO2", Url: "http://demo2" },
 		]
 	}
 ]
