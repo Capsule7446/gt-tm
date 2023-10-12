@@ -14846,7 +14846,7 @@
                 return /* @__PURE__ */ jsxRuntimeExports.jsx(
                   FormControlLabel$1,
                   {
-                    value: "female",
+                    value: groupI + "-" + itemI,
                     control: /* @__PURE__ */ jsxRuntimeExports.jsx(
                       Radio$1,
                       {

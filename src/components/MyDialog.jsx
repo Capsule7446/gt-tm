@@ -102,7 +102,7 @@ export const MyDialog = (prop) => {
 													<RadioGroup row aria-labelledby="radio-buttons-group-label" name="radio-buttons-group" >
 														{group.Urls.map((item, itemI) => {
 															return (
-																<FormControlLabel value="female"
+																<FormControlLabel value={groupI+'-'+itemI}
 																	control={<Radio
 																		onChange={() => handleChange(groupI, itemI)}
 																		name="radio-buttons" />}
