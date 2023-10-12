@@ -1370,7 +1370,7 @@
    * This source code is licensed under the MIT license found in the
    * LICENSE file in the root directory of this source tree.
    */
-  var b = "function" === typeof Symbol && Symbol.for, c = b ? Symbol.for("react.element") : 60103, d = b ? Symbol.for("react.portal") : 60106, e$1 = b ? Symbol.for("react.fragment") : 60107, f = b ? Symbol.for("react.strict_mode") : 60108, g = b ? Symbol.for("react.profiler") : 60114, h = b ? Symbol.for("react.provider") : 60109, k = b ? Symbol.for("react.context") : 60110, l = b ? Symbol.for("react.async_mode") : 60111, m = b ? Symbol.for("react.concurrent_mode") : 60111, n = b ? Symbol.for("react.forward_ref") : 60112, p = b ? Symbol.for("react.suspense") : 60113, q = b ? Symbol.for("react.suspense_list") : 60120, r$1 = b ? Symbol.for("react.memo") : 60115, t = b ? Symbol.for("react.lazy") : 60116, v = b ? Symbol.for("react.block") : 60121, w = b ? Symbol.for("react.fundamental") : 60117, x = b ? Symbol.for("react.responder") : 60118, y = b ? Symbol.for("react.scope") : 60119;
+  var b = "function" === typeof Symbol && Symbol.for, c = b ? Symbol.for("react.element") : 60103, d = b ? Symbol.for("react.portal") : 60106, e = b ? Symbol.for("react.fragment") : 60107, f = b ? Symbol.for("react.strict_mode") : 60108, g = b ? Symbol.for("react.profiler") : 60114, h = b ? Symbol.for("react.provider") : 60109, k = b ? Symbol.for("react.context") : 60110, l = b ? Symbol.for("react.async_mode") : 60111, m = b ? Symbol.for("react.concurrent_mode") : 60111, n = b ? Symbol.for("react.forward_ref") : 60112, p = b ? Symbol.for("react.suspense") : 60113, q = b ? Symbol.for("react.suspense_list") : 60120, r$1 = b ? Symbol.for("react.memo") : 60115, t = b ? Symbol.for("react.lazy") : 60116, v = b ? Symbol.for("react.block") : 60121, w = b ? Symbol.for("react.fundamental") : 60117, x = b ? Symbol.for("react.responder") : 60118, y = b ? Symbol.for("react.scope") : 60119;
   function z(a) {
     if ("object" === typeof a && null !== a) {
       var u2 = a.$$typeof;
@@ -1379,7 +1379,7 @@
           switch (a = a.type, a) {
             case l:
             case m:
-            case e$1:
+            case e:
             case g:
             case f:
             case p:
@@ -1410,7 +1410,7 @@
   reactIs_production_min.ContextProvider = h;
   reactIs_production_min.Element = c;
   reactIs_production_min.ForwardRef = n;
-  reactIs_production_min.Fragment = e$1;
+  reactIs_production_min.Fragment = e;
   reactIs_production_min.Lazy = t;
   reactIs_production_min.Memo = r$1;
   reactIs_production_min.Portal = d;
@@ -1434,7 +1434,7 @@
     return z(a) === n;
   };
   reactIs_production_min.isFragment = function(a) {
-    return z(a) === e$1;
+    return z(a) === e;
   };
   reactIs_production_min.isLazy = function(a) {
     return z(a) === t;
@@ -1455,7 +1455,7 @@
     return z(a) === p;
   };
   reactIs_production_min.isValidElementType = function(a) {
-    return "string" === typeof a || "function" === typeof a || a === e$1 || a === m || a === g || a === f || a === p || a === q || "object" === typeof a && null !== a && (a.$$typeof === t || a.$$typeof === r$1 || a.$$typeof === h || a.$$typeof === k || a.$$typeof === n || a.$$typeof === w || a.$$typeof === x || a.$$typeof === y || a.$$typeof === v);
+    return "string" === typeof a || "function" === typeof a || a === e || a === m || a === g || a === f || a === p || a === q || "object" === typeof a && null !== a && (a.$$typeof === t || a.$$typeof === r$1 || a.$$typeof === h || a.$$typeof === k || a.$$typeof === n || a.$$typeof === w || a.$$typeof === x || a.$$typeof === y || a.$$typeof === v);
   };
   reactIs_production_min.typeOf = z;
   {
@@ -14819,6 +14819,9 @@
       setItemIndex(itemI);
       setUrl(URLGroup[groupI].Urls[itemI].Url);
     };
+    const textChange = (e2) => {
+      setUrl(e2.target.value);
+    };
     return /* @__PURE__ */ jsxRuntimeExports.jsxs(Dialog$1, { fullWidth: true, maxWidth: "xl", open: prop.open, onClose: () => prop.setOpen(false), children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(DialogTitle$1, { children: "NMSL" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(DialogContent$1, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Grid$1, { container: true, spacing: 2, children: [
@@ -14830,7 +14833,7 @@
                 id: "standard-multiline-flexible",
                 multiline: true,
                 value: url,
-                onChange: e = setUrl(e.target.value),
+                onChange: textChange,
                 variant: "standard"
               }
             ) }),

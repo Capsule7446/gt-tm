@@ -67,6 +67,9 @@ export const MyDialog = (prop) => {
 		setItemIndex(itemI)
 		setUrl(URLGroup[groupI].Urls[itemI].Url)
 	};
+	const textChange = (e) =>{
+		setUrl(e.target.value)
+	}
 	return (
 		<Dialog fullWidth={true} maxWidth={'xl'} open={prop.open} onClose={() => prop.setOpen(false)}>
 			<DialogTitle>NMSL</DialogTitle>
@@ -80,7 +83,7 @@ export const MyDialog = (prop) => {
 										id="standard-multiline-flexible"
 										multiline
 										value={url}
-										onChange={(e) = setUrl(e.target.value)}
+										onChange={textChange}
 										variant="standard" />
 								</Grid>
 								<Grid item xs={2}>
