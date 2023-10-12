@@ -12455,25 +12455,6 @@
       }
     );
   };
-  const jsonMockData = {
-    "string": "this is jsonMockData test string",
-    "integer": 42,
-    "array": [
-      1,
-      2,
-      3,
-      "test",
-      null
-    ],
-    "float": 3.14159,
-    "object": {
-      "first-child": true,
-      "second-child": false,
-      "last-child": null
-    },
-    "string_number": "1234",
-    "date": "2023-10-07T07:24:14.537Z"
-  };
   const MyDialogPaperStyled = styled$1(Paper$1)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
     ...theme.typography.button,
@@ -12494,6 +12475,7 @@
     const [groupIndex, setGroupIndex] = React__namespace.useState(0);
     const [itemIndex, setItemIndex] = React__namespace.useState(0);
     const [url, setUrl] = React__namespace.useState("");
+    const [rsData, setRsData] = React.useState();
     const handleChange = (groupI, itemI) => {
       setGroupIndex(groupI);
       setItemIndex(itemI);
@@ -12559,7 +12541,7 @@
         /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { item: true, xs: 6, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(MyDialogPaperStyled, { children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(Typography$1, { variant: "h5", component: "h5", children: "Response Data" }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("hr", {}),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(MyReactJson, { data: jsonMockData })
+          /* @__PURE__ */ jsxRuntimeExports.jsx(MyReactJson, { data: rsData })
         ] }) })
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(DialogActions$1, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { onClick: () => prop.setOpen(false), children: "Close" }) })
