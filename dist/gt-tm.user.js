@@ -12505,8 +12505,8 @@
     return /* @__PURE__ */ jsxRuntimeExports.jsxs(Dialog$1, { fullWidth: true, maxWidth: "xl", open: prop.open, onClose: () => prop.setOpen(false), children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(DialogTitle$1, { children: "NMSL" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(DialogContent$1, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Grid$1, { container: true, spacing: 2, children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { item: true, xs: 12, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(MyDialogPaperStyled, { children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { container: true, justifyContent: "center", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { item: true, xs: 8, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(Grid$1, { item: true, xs: 12, children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { container: true, justifyContent: "center", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { item: true, xs: 9, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
             Paper$1,
             {
               component: "form",
@@ -12530,7 +12530,7 @@
           ) }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("hr", {}),
           /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { container: true, justifyContent: "center", children: URLGroup.map((group, groupI) => {
-            return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { item: true, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(FormControl$1, { children: [
+            return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { item: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(MyDialogPaperStyled, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(FormControl$1, { children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx(FormLabel$1, { id: `radio-buttons-group-label-${group.Group}`, children: group.Group }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(RadioGroup$1, { row: true, "aria-labelledby": "radio-buttons-group-label", name: "radio-buttons-group", children: group.Urls.map((item, itemI) => {
                 return /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -12548,9 +12548,9 @@
                   }
                 );
               }) })
-            ] }) }) });
+            ] }) }) }) });
           }) })
-        ] }) }),
+        ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(Grid$1, { item: true, xs: 6, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(MyDialogPaperStyled, { children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(Typography$1, { variant: "h5", component: "h5", children: "Request Data" }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("hr", {}),

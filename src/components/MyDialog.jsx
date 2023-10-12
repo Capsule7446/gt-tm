@@ -77,52 +77,53 @@ export const MyDialog = (prop) => {
 			<DialogContent>
 				<Grid container spacing={2}>
 					<Grid item xs={12} >
-						<MyDialogPaperStyled>
-							<Grid container justifyContent="center">
-								<Grid item xs={8}>
-									<Paper
-										component="form"
-										sx={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}
-									>
-										<InputBase
-											sx={{ ml: 1, flex: 1 }}
-											inputProps={{ 'aria-label': 'search google maps' }}
-											onChange={textChange}
-											value={url}
-										/>
-										<Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-										<IconButton type="button" sx={{ p: '10px' }} aria-label="search" onClick={() => { console.log('send') }}>
-											<SendIcon />
-										</IconButton>
-									</Paper>
-								</Grid>
+						<Grid container justifyContent="center">
+							<Grid item xs={9}>
+								<Paper
+									component="form"
+									sx={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}
+								>
+									<InputBase
+										sx={{ ml: 1, flex: 1 }}
+										inputProps={{ 'aria-label': 'search google maps' }}
+										onChange={textChange}
+										value={url}
+									/>
+									<Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+									<IconButton type="button" sx={{ p: '10px' }} aria-label="search" onClick={() => { console.log('send') }}>
+										<SendIcon />
+									</IconButton>
+								</Paper>
 							</Grid>
-							<hr />
-							<Grid container justifyContent="center">
-								{
-									URLGroup.map((group, groupI) => {
-										return (<>
-											<Grid item>
-												<FormControl>
-													<FormLabel id={`radio-buttons-group-label-${group.Group}`}>{group.Group}</FormLabel>
-													<RadioGroup row aria-labelledby="radio-buttons-group-label" name="radio-buttons-group" >
-														{group.Urls.map((item, itemI) => {
-															return (
-																<FormControlLabel value={groupI + '-' + itemI}
-																	control={<Radio
-																		onChange={() => handleChange(groupI, itemI)}
-																		name="radio-buttons" />}
-																	label={item.Name} />
-															)
-														})}
-													</RadioGroup>
-												</FormControl>
-											</Grid>
-										</>)
-									})
-								}
-							</Grid>
-						</MyDialogPaperStyled>
+						</Grid>
+						<hr />
+						<Grid container justifyContent="center">
+							{
+								URLGroup.map((group, groupI) => {
+									return (<>
+										<Grid item>
+										<MyDialogPaperStyled>
+											<FormControl>
+												<FormLabel id={`radio-buttons-group-label-${group.Group}`}>{group.Group}</FormLabel>
+												<RadioGroup row aria-labelledby="radio-buttons-group-label" name="radio-buttons-group" >
+													{group.Urls.map((item, itemI) => {
+														return (
+															<FormControlLabel value={groupI + '-' + itemI}
+																control={<Radio
+																	onChange={() => handleChange(groupI, itemI)}
+																	name="radio-buttons" />}
+																label={item.Name} />
+														)
+													})}
+												</RadioGroup>
+											</FormControl>
+											</MyDialogPaperStyled>
+										</Grid>
+									</>)
+								})
+							}
+						</Grid>
+
 					</Grid>
 					<Grid item xs={6}>
 						<MyDialogPaperStyled>
