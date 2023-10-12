@@ -96,8 +96,7 @@ export const MyDialog = (prop) => {
 								</Paper>
 							</Grid>
 						</Grid>
-						<hr />
-						<Grid container justifyContent="center">
+						<Grid container justifyContent={'left'}>
 							{
 								URLGroup.map((group, groupI) => {
 									return (<>
