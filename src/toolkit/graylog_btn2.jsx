@@ -57,7 +57,6 @@ export const GrayLogBTN2 = (prop) => {
     const [rsData, setRsData] = useState('')
     const [isRq, setIsRq] = useState(true)
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const [selectedValue, setSelectedValue] = React.useState('');
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
