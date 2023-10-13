@@ -1,19 +1,3 @@
-export const jsonMockData = {
-	"string": "this is jsonMockData test string",
-	"integer": 42,
-	"array": [
-		1,
-		2,
-		3,
-		"test",
-		null
-	],
-	"float": 3.14159,
-	"object": {
-		"first-child": true,
-		"second-child": false,
-		"last-child": null
-	},
-	"string_number": "1234",
-	"date": "2023-10-07T07:24:14.537Z"
-}
+export const jsonMockData = `{"string": "this is jsonMockData test string","integer": 42,"array": [1,2,3,"test",null],"float": 3.14159,"object": {"first-child": true,"second-child": false,"last-child": null},"string_number": "1234","date": "2023-10-07T07:24:14.537Z"}`
+export const jsonMockData2 = `{"TRANRQ":{"string": "this is jsonMockData test string","integer": 42,"array": [1,2,3,"test",null],"float": 3.14159,"object": {"first-child": true,"second-child": false,"last-child": null},"string_number": "1234","date": "2023-10-07T07:24:14.537Z"}}`
+export const XMLMockData = `<?xml version="1.0" encoding="UTF-8"?><colors><color name="red"><r>255</r><g>0</g><b>0</b></color><color name="green"><r>0</r><g>255</g><b>0</b></color><color name="blue"><r>0</r><g>0</g><b>255</b></color></colors>`;

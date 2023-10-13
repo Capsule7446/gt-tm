@@ -1,2 +1,1 @@
-export * from './MyDialog'
-export * from './MyReactJson'
+export { MyDataView } from './MyDataView'

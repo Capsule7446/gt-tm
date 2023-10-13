@@ -1,9 +1,23 @@
 export const URLGroup = [
     {
-        Group: "UAT",
-        Urls: [
-            { Name: "DEMO", Url: "http://demo1" },
-            { Name: "DEMO2", Url: "http://demo2" },
+        Name: "UAT",
+        Items: [
+            { Name: "中台雲", Url: "http://demo1" },
+            { Name: "資訊雲", Url: "http://demo2" },
+        ]
+    },
+    {
+        Name: "UT",
+        Items: [
+            { Name: "中台雲", Url: "http://demo1" },
+            { Name: "資訊雲", Url: "http://demo2" },
+        ]
+    },
+    {
+        Name: "SIT",
+        Items: [
+            { Name: "中台雲", Url: "http://demo1" },
+            { Name: "資訊雲", Url: "http://demo2" },
         ]
     }
 ]

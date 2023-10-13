@@ -17,12 +17,12 @@ export const MyDataView = (prop) => {
 	const unk = "Unknown"
 	const [type, setType] = useState(unk)
 	const [jsonData, setJsonData] = useState({})
-	const [xmlData, setXmlData] = useState()
-	const determineDataType = (parameter) => {
-		console.log(parameter)
+	const [xmlData, setXmlData] = useState('')
+	const determineDataType = (p) => {
+		console.log(p)
 		let type = json
 		try {
-			const jsonData = JSON.parse(parameter);
+			const jsonData = JSON.parse(p);
 			setJsonData(jsonData)
 		} catch (jsonError) {
 			type = unk
@@ -30,10 +30,10 @@ export const MyDataView = (prop) => {
 		try {
 			if (type === unk) {
 				const parser = new DOMParser();
-				const xmlData = parser.parseFromString(parameter, 'application/xml');
+				const xmlData = parser.parseFromString(p, 'application/xml');
 				if (xmlData.getElementsByTagName('parsererror').length === 0) {
 					type = xml
-					setXmlData(xmlData)
+					setXmlData(p)
 				}
 			}
 		} catch (xmlError) {

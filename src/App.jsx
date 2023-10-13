@@ -1,29 +1,30 @@
 import { useEffect } from 'react';
 import './App.css'
-import { MyDialog } from "./components/MyDialog.jsx";
 import { findBindingNode } from './utility/index.js';
 import { useState } from 'react';
-import {jsonMockData} from "./data/index.js";
+import { XMLMockData, jsonMockData, jsonMockData2 } from "./data/index.js";
+import { GrayLogBTN2 } from './toolkit';
 
 function App() {
 	const [open, setOpen] = useState(false)
-	const [rqData, setRqData] = useState({})
+	const [rqData, setRqData] = useState('')
+	const data = [XMLMockData, jsonMockData, jsonMockData2]
 	useEffect(() => {
 		const nodes = findBindingNode()
-		nodes.forEach(item => {
+		nodes.forEach((item, index) => {
 			//TODO: create button
 			const btn = document.createElement('button')
 			btn.innerText = 'demo'
 			// btn
 			btn.onclick = () => {
 				setOpen(true)
-				setRqData(jsonMockData)
+				setRqData(data[index])
 			}
 			//TODO: append button
 			item.appendChild(btn)
 		})
 	}, [])
-	return <MyDialog open={open} setOpen={setOpen} rqData={rqData} />
+	return <GrayLogBTN2 open={open} setOpen={setOpen} rqData={rqData} />
 }
 
 export default App
